@@ -17,6 +17,7 @@ public:
 	/*Constructores*/
 	User();
 	User(string,char*);
+	User(float);
 	User(string,string,char*,float);
 	~User();
 
