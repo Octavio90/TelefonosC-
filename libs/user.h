@@ -35,8 +35,9 @@ public:
 	int    Get_NumPhones();
 
 	/*Metodos*/ 
-	void Detail();
+	void Mostrar_Info();
 	bool validNumber(const char*);
+	void Detail();
 };
 
 #endif

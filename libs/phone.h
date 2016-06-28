@@ -7,20 +7,20 @@ using namespace std;
 
 class Phone{
 private:
-	string marca;
-	string modelo;
+	string company;
+	string model;
 	string version_SO;
-	string camara_f;
-	string camara_t;
-	string duenio;
+	string camera_f;
+	string camera_t;
+	string owner;
 	int mem_r;
 	int mem_rom;
-	int peso;
+	int weight;
 	
-	User* contacto;
+	User* contact;
 	char* phoneNumber;
-	float  precio;
-	;
+	float  price;
+	
 	
 public:
 	/*Constructores*/
@@ -30,18 +30,18 @@ public:
 
 	
 	/*Getters and Setters*/ 
-	void   Set_Marca(string);
-	void   Set_Modelo(string);
-	void   Set_Versio_SO(string);
-	void   Set_Camara_t(string);
-	void   Set_Camara_t(string);
-	void   Set_Duenio(string);
+	void   Set_Company(string);
+	void   Set_Model(string);
+	void   Set_Version_SO(string);
+	void   Set_Camera_t(string);
+	void   Set_Camera_t(string);
+	void   Set_Owner(string);
 	void   Set_Mem_r(int);
 	void   Set_Mem_rom(int);
-	void   Set_Peso(int);
-	void   Set_Usuario(*usuario);
+	void   Set_Wight(int);
+	void   Set_User(*usuario);
 	void   Set_PhoneC(*char);
-	void   Set_Precio(precio);
+	void   Set_Price(float);
 
 	string Get_Marca();
 	string Get_Modelo();
