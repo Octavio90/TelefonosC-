@@ -9,28 +9,30 @@ class User{
 private:
 	string name;
 	string address;
-	char  *phoneNumber;
+	char*  phoneNumber;
 	float  credit;
 	int    numPhones;
 	
 public:
 	/*Constructores*/
 	User();
-	User(string,char*);
-	User(string,string,char*,float,int);
+	User(string,const char*);
+	User(string,string,const char*,float,int);
 	~User();
 
 	
 	/*Getters and Setters*/ 
 	void   Set_Name(string);
 	void   Set_Address(string);
-	void   Set_PhoneNumber(char*);
+	void   Set_PhoneNumber(const char*);
 	void   Set_Credit(float);
+	void   Set_NumPhones(int);
 
 	string Get_Name();
 	string Get_Address();
-	char  *Get_PhoneNumber();
+	char*  Get_PhoneNumber();
 	float  Get_Credit(); 
+	int    Get_NumPhones();
 
 	/*Metodos*/ 
 	void Detail();
