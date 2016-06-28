@@ -63,6 +63,7 @@ void   User::Detail(){
 	cout << "Nombre   : " << Get_Name() << endl;
 	cout << "Telefono : " << Get_PhoneNumber() << endl;
 	cout << "Direccion: " << Get_Address() << endl;
+	cout << "Credito  : " << Get_Credit() << endl;
 	cout << "Cantidad de telefonos: " << Get_NumPhones() << endl;
 }
 
