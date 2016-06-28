@@ -14,7 +14,7 @@ private:
 	int    numPhones;
 	
 public:
-	/*Constructores*/
+	/*Constructores y Destructores*/
 	User();
 	User(string,const char*);
 	User(string,string,const char*,float,int);
@@ -36,7 +36,7 @@ public:
 
 	/*Metodos*/ 
 	void Detail();
-	bool Vgit alidNumber(const char*);
+	bool ValidNumber(const char*);
 };
 
 #endif

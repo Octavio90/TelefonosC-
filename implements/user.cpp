@@ -42,7 +42,6 @@ void   User::Set_Address(string address){this->address=address;}
 void   User::Set_Credit(float credit){this->credit=credit;}
 void   User::Set_NumPhones(int numPhones){this->numPhones=numPhones;}
 void   User::Set_PhoneNumber(const char* number){
-
 	char cad[50];
 	while(ValidNumber(number) != true){
 		cout << "Numero Invalido !!!" << endl;
@@ -73,7 +72,7 @@ bool   User::ValidNumber(const char* number){
 	char prefix[]={*number,*(++number)};
 	number--;
 	
-	if(prefix[0] == '5' && prefix[1] == '5' && size == 8){
+	if(prefix[0] == '5' && prefix[1] == '5' && size == 10){
 		flag=true;
 	}
 
