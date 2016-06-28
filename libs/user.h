@@ -36,7 +36,7 @@ public:
 
 	/*Metodos*/ 
 	void Detail();
-	bool validNumber(char*);
+	bool validNumber(const char*);
 };
 
 #endif
