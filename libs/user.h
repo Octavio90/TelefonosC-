@@ -36,7 +36,7 @@ public:
 
 	/*Metodos*/ 
 	void Detail();
-	bool validNumber(const char*);
+	bool Vgit alidNumber(const char*);
 };
 
 #endif

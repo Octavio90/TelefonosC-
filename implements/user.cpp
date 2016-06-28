@@ -44,7 +44,7 @@ void   User::Set_NumPhones(int numPhones){this->numPhones=numPhones;}
 void   User::Set_PhoneNumber(const char* number){
 
 	char cad[50];
-	while(validNumber(number) != true){
+	while(ValidNumber(number) != true){
 		cout << "Numero Invalido !!!" << endl;
 		cout << "Ingrese de nuevo el numero telefonico: ";
 		cin  >> cad;
@@ -67,7 +67,7 @@ void   User::Detail(){
 	cout << "Cantidad de telefonos: " << Get_NumPhones() << endl;
 }
 
-bool   User::validNumber(const char* number){
+bool   User::ValidNumber(const char* number){
 	bool flag=false;
 	int  size=strlen(number);
 	char prefix[]={*number,*(++number)};
