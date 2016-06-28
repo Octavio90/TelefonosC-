@@ -13,7 +13,7 @@ User::User(string name ,const char* number){
 	Set_Address("");
 	phoneNumber = NULL;	
 	Set_PhoneNumber(number);
-	Set_Credit(1000);
+	Set_Credit(0);
 	Set_NumPhones(0);
 }
 
@@ -27,7 +27,8 @@ User::User(string name,string address,const char* number,float credit,int numPho
 }
 
 User::~User(){
-	delete[] phoneNumber;
+	//delete [] phoneNumber;
+	//cout << "Destructor !!!" << endl;
 }
 
 /* Getters y Setters */
@@ -45,12 +46,13 @@ void   User::Set_PhoneNumber(const char* number){
 	char cad[50];
 	while(ValidNumber(number) != true){
 		cout << "Numero Invalido !!!" << endl;
+		cout << "Debe contener 10 caracteres y empezar en '55'" << endl;
 		cout << "Ingrese de nuevo el numero telefonico: ";
 		cin  >> cad;
 		number = cad;
 	}
 	if(phoneNumber != NULL){
-		delete[] phoneNumber;
+		delete [] phoneNumber;
 	}
 	phoneNumber = new char[strlen(number)+1];
 	strcpy(phoneNumber,number);	
@@ -58,7 +60,6 @@ void   User::Set_PhoneNumber(const char* number){
 
 /* Metodos */
 void   User::Detail(){
-	cout << endl;
 	cout << "Nombre   : " << Get_Name() << endl;
 	cout << "Telefono : " << Get_PhoneNumber() << endl;
 	cout << "Direccion: " << Get_Address() << endl;
