@@ -12,7 +12,9 @@ private:
 	User*  users;
 	int    numUsers;
 	//Phone* phones;
-
+	User* FindUser(string);
+	User* FindUser(char *);
+	User* FindUser(string,char*);
 
 public:
 	/*Constructores y Destructores*/
@@ -31,9 +33,6 @@ public:
 	void  PrintAllUsers();
 	void  PrintUser(string);
 	void  PrintUser(char *);
-	User* FindUser(string);
-	User* FindUser(char *);
-	User* FindUser(string,char*);
 };
 
 #endif

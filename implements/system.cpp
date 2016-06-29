@@ -38,25 +38,40 @@ void  System::PrintBill(){}
 
 void  System::PrintAllUsers(){
 	User *user = users;
-	cout<<endl;
-	cout<<"-------------------------------------"<<endl;
-	cout<<"-------------------------------------"<<endl;
+	cout << endl;
+	cout << "-------------------------------------" << endl;
+	cout << "-------------------------------------" << endl;
 
 	for(int i=0;i<Get_NumUsers();i++){
 		(user+i)->Detail();
-		cout<<"-------------------------------------"<<endl;
+		cout << "-------------------------------------" << endl;
 	}
-	cout<<"-------------------------------------"<<endl<<endl;
+	cout << "-------------------------------------" << endl << endl;
 }
 
 void  System::PrintUser(string name){
 	User* user = FindUser(name);
-	user->Detail(); 
+	cout << endl;
+	cout << "-------------------------------------" << endl;
+	cout << "-------------------------------------" << endl;
+	if(user != NULL)
+		user->Detail();
+	else
+		cout << "Usuario NO encontrado." << endl; 
+	cout << "-------------------------------------" << endl;
+	cout << "-------------------------------------" << endl << endl;
 }
 
 void  System::PrintUser(char* phone){
 	User* user = FindUser(phone);
-	user->Detail(); 
+	cout << "-------------------------------------" << endl;
+	cout << "-------------------------------------" << endl;
+	if(user != NULL)
+		user->Detail();
+	else
+		cout << "Usuario NO encontrado." << endl; 
+	cout << "-------------------------------------" << endl;
+	cout << "-------------------------------------" << endl << endl; 
 }
 
 bool  System::NewUser(){
@@ -124,6 +139,34 @@ bool  System::NewUser(){
 
 
 bool  System::BuyPhone(){}
-User* System::FindUser(string name){}
-User* System::FindUser(char* phone){}
+
+User* System::FindUser(string name){
+	User *user = NULL;
+	for(int i=0;i<Get_NumUsers();i++){
+		user = (users+i);
+		if(user->Get_Name() == name){
+			return user;
+		}
+		else{
+			user = NULL;
+		}
+	}
+	return user;
+}
+
+User* System::FindUser(char* phone){
+	/* Pendiente */
+	User *user = NULL;
+	for(int i=0;i<Get_NumUsers();i++){
+		user = (users+i);
+		if(user->Get_PhoneNumber() == phone){
+			return user;
+		}
+		else{
+			user = NULL;
+		}
+	}
+	return user;	
+}
+
 User* System::FindUser(string name,char* phone){}
