@@ -14,7 +14,7 @@ private:
 	//Phone* phones;
 	User* FindUser(string);
 	User* FindUser(char *);
-	User* FindUser(string,char*);
+	User* FindUser(int);
 
 public:
 	/*Constructores y Destructores*/
@@ -30,9 +30,10 @@ public:
 	bool  NewUser();
 	void  PrintBill();
 	bool  BuyPhone();
-	void  PrintAllUsers();
+	void  PrintUser(int);
 	void  PrintUser(string);
 	void  PrintUser(char *);
+	void  PrintAllUsers();
 };
 
 #endif

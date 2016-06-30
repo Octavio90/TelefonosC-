@@ -19,9 +19,6 @@ System::System(){
 
 System::~System(){
 	if(users != NULL){
-		/*for(int i=0;i<Get_NumUsers();i++){
-		    delete (users+i);
-		}*/
 		delete [] users;
 	}
 }
@@ -72,6 +69,18 @@ void  System::PrintUser(char* phone){
 		cout << "Usuario NO encontrado." << endl; 
 	cout << "-------------------------------------" << endl;
 	cout << "-------------------------------------" << endl << endl; 
+}
+
+void System::PrintUser(int number){
+	User* user = FindUser(number);
+	cout << "-------------------------------------" << endl;
+	cout << "-------------------------------------" << endl;
+	if(user != NULL)
+		user->Detail();
+	else
+		cout << "Usuario NO encontrado." << endl; 
+	cout << "-------------------------------------" << endl;
+	cout << "-------------------------------------" << endl << endl;	
 }
 
 bool  System::NewUser(){
@@ -125,8 +134,8 @@ bool  System::NewUser(){
 			cout << "Memoria insuficiente !!! " << endl;
 		}
 		else{
-			memcpy( users2, users, Get_NumUsers()*sizeof(User));
-			//delete[] users;
+			memcpy(users2, users, Get_NumUsers()*sizeof(User));
+			//delete [] users;
 			users = users2;
 		}
 		users[idx] = user;
@@ -155,11 +164,45 @@ User* System::FindUser(string name){
 }
 
 User* System::FindUser(char* phone){
-	/* Pendiente */
+	User *user = NULL;
+	char *temp = phone;
+	char *cellPhone = NULL;
+	int   flag = 0;
+
+	for(int i=0;i<Get_NumUsers();i++){
+		user = (users+i);
+		flag = 0;
+		cellPhone = user->Get_PhoneNumber();
+		cout << "Valor Objeto: " << cellPhone ;
+		cout << "\t Comparando con: " << phone << endl;
+		for(int j=0;j<10;j++){
+			cout << "Valor cellPhone: " << *(cellPhone+j);
+			cout << "\t Valor phone: " << *(phone+j) << endl;
+			if(*(cellPhone+j) == *(phone+j)){
+				flag ++;
+			}
+			else {
+				break;
+			}
+		}
+		cout << "Valor flag: " << flag << endl;
+		if(flag == 10){
+			return user;
+		}
+		else{
+			phone      = temp;
+			cellPhone -= flag;
+			user       = NULL;
+		}
+	}
+	return user;	
+}
+
+User* System::FindUser(int number){
 	User *user = NULL;
 	for(int i=0;i<Get_NumUsers();i++){
 		user = (users+i);
-		if(user->Get_PhoneNumber() == phone){
+		if(user->Get_NumPhones() == number){
 			return user;
 		}
 		else{
@@ -168,5 +211,3 @@ User* System::FindUser(char* phone){
 	}
 	return user;	
 }
-
-User* System::FindUser(string name,char* phone){}

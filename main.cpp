@@ -8,20 +8,21 @@ int main(){
 
 	System system;
 	string stemp;
-	char telefono[50];
-	char opcion;
-	bool flag;
+	int    itemp;
+	char   telefono[50];
+	char   opcion;
+	bool   flag;
 
-	cout << endl << endl << "\tBienvenido " << endl << endl;
+	cout << endl << endl << "\t\tBienvenido " << endl << endl;
 
 	while(opcion != '0'){
-	cout << "Menu - Usuarios Resgistrados (" << system.Get_NumUsers() << ")" << endl;	
+	cout << "\tMenu - Usuarios Resgistrados (" << system.Get_NumUsers() << ")" << endl;	
 	cout << "1-Ingresar un nuevo Usario." << endl;
 	cout << "2-Registra compra de telefono." << endl;
 	cout << "3-Imprimir factura." << endl;
 	cout << "4-Buscar usuario por nombre." << endl;
 	cout << "5-Buscar usuario por telefono." << endl;
-	cout << "6-Buscar usuario por nombre y telefono." << endl;
+	cout << "6-Buscar usuario por cantidad de telefonos." << endl;
 	cout << "7-Mostrar todos usarios." << endl;
 	cout << "0-Salir." << endl;
 
@@ -50,7 +51,9 @@ int main(){
 				system.PrintUser(telefono);
 				break;
 			case '6':
-			
+				cout << "Cantidad de telefonos: "; 
+				cin  >> itemp;
+				system.PrintUser(itemp);
 				break;
 			case '7':
 				system.PrintAllUsers();
