@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string.h>
+#define SIZE 1
 #include "../libs/user.h"
+#include "../libs/phone.h"
 
 using namespace std;
 
@@ -8,11 +10,13 @@ using namespace std;
 /* Constructores y Destructores */
 User::User(){}
 
-User::User(string name ,const char* number){
+User::User(string name){
 	Set_Name(name);
-	Set_Address("");
-	phoneNumber = NULL;	
-	Set_PhoneNumber(number);
+	Set_Address("");	
+		phoneNumber = new Phone[SIZE];
+		if (phoneNumber == NULL){
+		 	cout << "No se pudo crear espacio para los telefonos"
+		 } 
 	Set_Credit(0);
 	Set_NumPhones(0);
 }

@@ -1,4 +1,5 @@
 #include <iostream>
+#include "phone.h"
 #ifndef USER_H
 #define USER_H
 
@@ -7,37 +8,36 @@ using namespace std;
 
 class User{
 private:
-	string name;
-	string address;
-	char*  phoneNumber;
-	float  credit;
-	int    numPhones;
+	string  name;
+	string  address;
+	Phone*  phoneNumber;
+	float   credit;
+	int     numPhones;
 	
 public:
 	/*Constructores y Destructores*/
 	User();
-	User(string,const char*);
-	User(string,string,const char*,float,int);
+	User(string);
+	User(string,string,float,int);
 	~User();
 
 	
 	/*Getters and Setters*/ 
 	void   Set_Name(string);
 	void   Set_Address(string);
-	void   Set_PhoneNumber(const char*);
 	void   Set_Credit(float);
 	void   Set_NumPhones(int);
 
-	string Get_Name();
-	string Get_Address();
-	char*  Get_PhoneNumber();
-	float  Get_Credit(); 
-	int    Get_NumPhones();
+	string  Get_Name();
+	string  Get_Address();
+	Phone*  Get_PhoneNumber();
+	float   Get_Credit(); 
+	int     Get_NumPhones();
 
 	/*Metodos*/ 
 
 	void Detail();
-	bool ValidNumber(const char*);
+	bool AddPhoneNumber(const Phone &);
 };
 
 #endif

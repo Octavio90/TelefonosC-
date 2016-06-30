@@ -1,4 +1,5 @@
 #include <iostream>
+#include "user.h"
 #ifndef PHONE_H
 #define PHONE_H
 
@@ -20,6 +21,7 @@ private:
 	User* contact;
 	char* phoneNumber;
 	float  price;
+	string MiPhoneNumber;
 	
 	
 public:
@@ -33,20 +35,21 @@ public:
 	void   Set_Company(string);
 	void   Set_Model(string);
 	void   Set_Version_SO(string);
-	void   Set_Camera_t(string);
+	void   Set_Camera_f(string);
 	void   Set_Camera_t(string);
 	void   Set_Owner(string);
 	void   Set_Mem_r(int);
 	void   Set_Mem_rom(int);
 	void   Set_Wight(int);
-	void   Set_User(*usuario);
-	void   Set_PhoneC(*char);
+	void   Set_User(User*);
+	void   Set_PhoneC(char*);
 	void   Set_Price(float);
+	void   Set_PhoneNumber(string);
 
 	string Get_Marca();
 	string Get_Modelo();
 	string Get_Versio_SO();
-	string Get_Camara_t();
+	string Get_Camara_f();
 	string Get_Camara_t();
 	string Get_Duenio();
 	int Get_Mem_r();
@@ -55,6 +58,9 @@ public:
 	Usuario Get_Usuario();
 	char* Get_PhoneC();
 	float Get_Precio();
+	string GetPhoneNumber();
+
+
 	/*Metodos*/ 
 	void Detail();
 	bool validNumber(char*);
