@@ -20,9 +20,6 @@ System::System(){
 
 System::~System(){
 	if(users != NULL){
-		/*for(int i=0;i<Get_NumUsers();i++){
-		    delete (users+i);
-		}*/
 		delete [] users;
 	}
 }
@@ -39,25 +36,52 @@ void  System::PrintBill(){}
 
 void  System::PrintAllUsers(){
 	User *user = users;
-	cout<<endl;
-	cout<<"-------------------------------------"<<endl;
-	cout<<"-------------------------------------"<<endl;
+	cout << endl;
+	cout << "-------------------------------------" << endl;
+	cout << "-------------------------------------" << endl;
 
 	for(int i=0;i<Get_NumUsers();i++){
 		(user+i)->Detail();
-		cout<<"-------------------------------------"<<endl;
+		cout << "-------------------------------------" << endl;
 	}
-	cout<<"-------------------------------------"<<endl<<endl;
+	cout << "-------------------------------------" << endl << endl;
 }
 
 void  System::PrintUser(string name){
 	User* user = FindUser(name);
-	user->Detail(); 
+	cout << endl;
+	cout << "-------------------------------------" << endl;
+	cout << "-------------------------------------" << endl;
+	if(user != NULL)
+		user->Detail();
+	else
+		cout << "Usuario NO encontrado." << endl; 
+	cout << "-------------------------------------" << endl;
+	cout << "-------------------------------------" << endl << endl;
 }
 
 void  System::PrintUser(char* phone){
 	User* user = FindUser(phone);
-	user->Detail(); 
+	cout << "-------------------------------------" << endl;
+	cout << "-------------------------------------" << endl;
+	if(user != NULL)
+		user->Detail();
+	else
+		cout << "Usuario NO encontrado." << endl; 
+	cout << "-------------------------------------" << endl;
+	cout << "-------------------------------------" << endl << endl; 
+}
+
+void System::PrintUser(int number){
+	User* user = FindUser(number);
+	cout << "-------------------------------------" << endl;
+	cout << "-------------------------------------" << endl;
+	if(user != NULL)
+		user->Detail();
+	else
+		cout << "Usuario NO encontrado." << endl; 
+	cout << "-------------------------------------" << endl;
+	cout << "-------------------------------------" << endl << endl;	
 }
 
 void  System::Detail_Phone(){
@@ -164,8 +188,8 @@ bool  System::NewUser(){
 			cout << "Memoria insuficiente !!! " << endl;
 		}
 		else{
-			memcpy( users2, users, Get_NumUsers()*sizeof(User));
-			//delete[] users;
+			memcpy(users2, users, Get_NumUsers()*sizeof(User));
+			//delete [] users;
 			users = users2;
 		}
 		users[idx] = user;
@@ -178,6 +202,66 @@ bool  System::NewUser(){
 
 
 bool  System::BuyPhone(){}
-User* System::FindUser(string name){}
-User* System::FindUser(char* phone){}
-User* System::FindUser(string name,char* phone){}
+
+User* System::FindUser(string name){
+	User *user = NULL;
+	for(int i=0;i<Get_NumUsers();i++){
+		user = (users+i);
+		if(user->Get_Name() == name){
+			return user;
+		}
+		else{
+			user = NULL;
+		}
+	}
+	return user;
+}
+
+User* System::FindUser(char* phone){
+	User *user = NULL;
+	char *temp = phone;
+	char *cellPhone = NULL;
+	int   flag = 0;
+
+	for(int i=0;i<Get_NumUsers();i++){
+		user = (users+i);
+		flag = 0;
+		cellPhone = user->Get_PhoneNumber();
+		cout << "Valor Objeto: " << cellPhone ;
+		cout << "\t Comparando con: " << phone << endl;
+		for(int j=0;j<10;j++){
+			cout << "Valor cellPhone: " << *(cellPhone+j);
+			cout << "\t Valor phone: " << *(phone+j) << endl;
+			if(*(cellPhone+j) == *(phone+j)){
+				flag ++;
+			}
+			else {
+				break;
+			}
+		}
+		cout << "Valor flag: " << flag << endl;
+		if(flag == 10){
+			return user;
+		}
+		else{
+			phone      = temp;
+			cellPhone -= flag;
+			user       = NULL;
+		}
+	}
+	return user;	
+}
+
+User* System::FindUser(int number){
+	User *user = NULL;
+	for(int i=0;i<Get_NumUsers();i++){
+		user = (users+i);
+		if(user->Get_NumPhones() == number){
+			return user;
+		}
+		else{
+			user = NULL;
+		}
+	}
+	return user;	
+}

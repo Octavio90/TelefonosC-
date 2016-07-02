@@ -36,8 +36,6 @@ public:
 
 	/*Metodos*/ 
 
-	void Mostrar_Info();
-	bool validNumber(const char*);
 	void Detail();
 	bool ValidNumber(const char*);
 };

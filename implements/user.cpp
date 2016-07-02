@@ -26,10 +26,7 @@ User::User(string name,string address,const char* number,float credit,int numPho
 	Set_NumPhones(numPhones);
 }
 
-User::~User(){
-	//delete [] phoneNumber;
-	//cout << "Destructor !!!" << endl;
-}
+User::~User(){}
 
 /* Getters y Setters */
 string User::Get_Name(){return this->name;}
