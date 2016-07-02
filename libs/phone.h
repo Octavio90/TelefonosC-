@@ -12,12 +12,12 @@ private:
 	string version_SO;
 	string camera_f;
 	string camera_t;
-	string owner;
+	//string owner;
 	int mem_r;
 	int mem_rom;
 	int weight;
-	
-	User* contact;
+	//int num_Phones;
+	//User* contact;
 	char* phoneNumber;
 	float  price;
 	
@@ -25,7 +25,7 @@ private:
 public:
 	/*Constructores*/
 	Phone();
-	Phone(string,string,string,string,string,string,int,int,int,User* contacto,char*,float);
+	Phone(string,string,string,string,string,int,int,int,const char*,float);
 	~Phone();
 
 	
@@ -33,31 +33,34 @@ public:
 	void   Set_Company(string);
 	void   Set_Model(string);
 	void   Set_Version_SO(string);
+	void   Set_Camera_f(string);
 	void   Set_Camera_t(string);
-	void   Set_Camera_t(string);
-	void   Set_Owner(string);
+	//void   Set_Owner(string);
 	void   Set_Mem_r(int);
 	void   Set_Mem_rom(int);
-	void   Set_Wight(int);
-	void   Set_User(*usuario);
-	void   Set_PhoneC(*char);
+	void   Set_Weight(int);
+	//void   Set_Num_Phones(int);
+	//void   Set_User(*usuario);
+	void   Set_PhoneC(const char*);
 	void   Set_Price(float);
 
-	string Get_Marca();
-	string Get_Modelo();
-	string Get_Versio_SO();
-	string Get_Camara_t();
-	string Get_Camara_t();
-	string Get_Duenio();
+	string Get_Company();
+	string Get_Model();
+	string Get_Version_SO();
+	string Get_Camera_f();
+	string Get_Camera_t();
+	//string Get_Owner();
 	int Get_Mem_r();
 	int Get_Mem_rom();
-	int Get_Peso();
-	Usuario Get_Usuario();
+	int Get_Weight();
+	//int Get_Num_Phones();
+	//Usuario Get_User();
 	char* Get_PhoneC();
-	float Get_Precio();
+	float Get_Price();
+	
 	/*Metodos*/ 
 	void Detail();
-	bool validNumber(char*);
+	bool ValidNumber(const char*);
 };
 
 #endif

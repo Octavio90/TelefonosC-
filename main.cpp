@@ -1,6 +1,7 @@
 #include <iostream>
 #include "libs/user.h"
 #include "libs/system.h"
+#include "libs/phone.h"
 
 using namespace std;
 
@@ -9,6 +10,8 @@ int main(){
 	System system;
 	char opcion;
 	bool flag;
+
+	Phone nuevoTel;
 
 	cout << endl << endl << "\tBienvenido " << endl << endl;
 
@@ -19,6 +22,9 @@ int main(){
 	cout << "3-Imprimir factura." << endl;
 	cout << "4-Buscar usuario." << endl;
 	cout << "5-Mostrar todos usarios." << endl;
+	//Para validar el metodo Phone y los constructores 
+
+	cout<<"6.-Dar de alta un nuevo telefono . "<<endl; 
 	cout << "0-Salir." << endl;
 
 	
@@ -34,6 +40,15 @@ int main(){
 				break;
 			case '5':
 				system.PrintAllUsers();
+				break;
+			case '6':
+				flag=system.NewPhone();
+				if (flag==true){
+					cout<< "El telefono se ingreso correctamente : "<<endl;
+					system.Detail_Phone();}
+				else
+					cout<<"Ocurrio un problema"<<endl;
+				break;
 			case '0':
 				break;
 			default:
@@ -42,5 +57,8 @@ int main(){
 		}
 	}
 	
+
+
+
 	return 0;	
 }

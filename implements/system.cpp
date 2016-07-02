@@ -3,6 +3,7 @@
 #define  SIZE 1
 #include "../libs/system.h"
 #include "../libs/user.h"
+#include "../libs/phone.h"
 
 using namespace std;
 
@@ -57,6 +58,59 @@ void  System::PrintUser(string name){
 void  System::PrintUser(char* phone){
 	User* user = FindUser(phone);
 	user->Detail(); 
+}
+
+void  System::Detail_Phone(){
+	cout << endl;
+	cout << "Compania   : " << Get_Company() << endl;
+	cout << "Version SO : " << Get_Version_SO() << endl;
+	cout << "Modelo: " << Get_Model() << endl;
+	cout << "Pixeles camara frontal  : " << Get_Camera_f() << endl;
+	cout << "Pixeles camara trasera  : " << Get_Camera_t() << endl;
+	//cout << "Duenio : " << Get_Owner() << endl;
+	cout << "Capacidad de memoria Ram: " << Get_Mem_r() << endl;
+	cout << "Capacidad de memoria Rom: " << Get_Mem_rom() << endl;
+	cout << "Peso : " << Get_Weight() << endl;
+	cout << "Numero Asignado: " << Get_PhoneC() << endl;
+	cout << "Precio : " << Get_Price() << endl;
+
+}
+
+
+bool System::NewPhone(){
+	Phone tel;
+	
+	string company="Telcel";
+	string model="Uawey 2.5";
+	string version_SO="android 2.5";
+	string camera_f="13 mega pixels";
+	string camera_t="12 Mpx";
+	//string owner;
+	int mem_r=8;
+	int mem_rom=2;
+	int weight=8;
+	//int num_Phones;
+	//User* contact;
+	char number[50];
+	float  price=1255.00;
+
+	
+
+	tel.Set_Company(company);
+	tel.Set_Model(model);
+	tel.Set_Version_SO(version_SO);
+	tel.Set_Camera_f(camera_f);
+	tel.Set_Camera_t(camera_t);
+	tel.Set_Mem_r(mem_r);
+	tel.Set_Mem_rom(mem_rom);
+	tel.Set_Weight(weight);
+	tel.Set_PhoneC(number);
+	tel.Set_Price(price);
+	flag =true;
+
+	return flag;
+
+
 }
 
 bool  System::NewUser(){
