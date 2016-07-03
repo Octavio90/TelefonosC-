@@ -39,7 +39,9 @@ int main(){
 					cout << "Usuario ingresado correctamente !" << endl << endl;
 				else
 					cout << "Ocurrio un problema, intente nuevamente " << endl << endl;
-				break;
+				break;/*
+			case '2':
+				flag=system.*/
 			case '4':
 				cout << endl;
 				cout << "Ingresa el nombre del usario: "; 
@@ -61,14 +63,14 @@ int main(){
 			case '7':
 				system.PrintAllUsers();
 				break;
-			case '6':
+			/*case '6':
 				flag=system.NewPhone();
 				if (flag==true){
 					cout<< "El telefono se ingreso correctamente : "<<endl;
 					system.Detail_Phone();}
 				else
 					cout<<"Ocurrio un problema"<<endl;
-				break;
+				break;*/
 			case '0':
 				break;
 			default:

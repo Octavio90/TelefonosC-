@@ -9,58 +9,58 @@ class Phone{
 private:
 	string company;
 	string model;
-	string version_SO;
-	string camera_f;
-	string camera_t;
-	//string owner;
-	int mem_r;
+	float weight;
+	float version;
+	float camera_f;
+	float camera_t;
+	int mem_ram;
 	int mem_rom;
-	int weight;
-	//int num_Phones;
-	//User* contact;
-	char* phoneNumber;
-	float  price;
-	
+	//User own;
+	//User contact;
+	float price;
+	string *mi_tel_number;
 	
 public:
-	/*Constructores*/
-	Phone();
-	Phone(string,string,string,string,string,int,int,int,const char*,float);
-	~Phone();
 
-	
-	/*Getters and Setters*/ 
-	void   Set_Company(string);
-	void   Set_Model(string);
-	void   Set_Version_SO(string);
-	void   Set_Camera_f(string);
-	void   Set_Camera_t(string);
-	//void   Set_Owner(string);
-	void   Set_Mem_r(int);
-	void   Set_Mem_rom(int);
-	void   Set_Weight(int);
+	void   Set_Company(string comp);
+	void   Set_Model(string mol);
+	void   Set_Weight(float w);
+	void   Set_Version(float v);
+	void   Set_Camera_f(float cf);
+	void   Set_Camera_t(float ct);
+	//void   Set_Owner(User *own);
+	void   Set_Mem_ram(int mram);
+	void   Set_Mem_rom(int mrom);
 	//void   Set_Num_Phones(int);
 	//void   Set_User(*usuario);
-	void   Set_PhoneC(const char*);
-	void   Set_Price(float);
+	void   Set_Price(float p);
+	//void   Set_Num_Tel(string mi_num);
 
 	string Get_Company();
 	string Get_Model();
-	string Get_Version_SO();
-	string Get_Camera_f();
-	string Get_Camera_t();
+	float Get_Weight();
+	float Get_Version();
+	float Get_Camera_f();
+	float Get_Camera_t();
 	//string Get_Owner();
-	int Get_Mem_r();
+	int Get_Mem_ram();
 	int Get_Mem_rom();
-	int Get_Weight();
-	//int Get_Num_Phones();
-	//Usuario Get_User();
-	char* Get_PhoneC();
-	float Get_Price();
 	
-	/*Metodos*/ 
-	void Detail();
-	bool ValidNumber(const char*);
+	//int Get_Num_Phones(){return ;}
+	//Usuario Get_User(){return ;}
+	//char* Get_PhoneC(){return ;}
+	float Get_Price();
+
+	//constructores
+	Phone();
+
+	Phone(string , string , float ,float ,float , float ,int ,int ,float );
+	Phone(string , string );
+	~Phone();
+
+	//Metodos a definir
+	void Detail_Phone();
+
 };
 
 #endif

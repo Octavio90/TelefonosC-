@@ -9,20 +9,15 @@ using namespace std;
 /* Constructores y Destructores */
 Phone::Phone(){}
 // agregar al constructor User *own,int num_Phones
-Phone::Phone(string company,string model ,string SO,string cameraf,string camerat,int ram,int rom,int w,const char* number,float price){
-	Set_Company(company);
+Phone::Phone(string comp, string model, float weight,float version,float cameraf, float camerat,int mem_ram,int mem_rom,float price){
+	Set_Company(comp);
 	Set_Model(model);
-	Set_Version_SO(SO);
+	Set_Weight(weight);
+	Set_Version(version);
 	Set_Camera_f(cameraf);
 	Set_Camera_t(camerat);
-	//Set_Owner(own);
-	Set_Mem_r(ram);
-	Set_Mem_rom(rom);
-	Set_Weight(w);
-	//Set_Num_Phones(num_Phones);
-	//Set_User(contact);
-	phoneNumber = NULL;	
-	Set_PhoneC(number);
+	Set_Mem_ram(mem_ram);
+	Set_Mem_rom(mem_rom);
 	Set_Price(price);
 	
 	
@@ -33,35 +28,26 @@ Phone::~Phone(){
 
 /* Getters y Setters */
 
-	string Phone::Get_Company(){return this->company;}
-	string Phone::Get_Model(){return this->model;}
-	string Phone::Get_Version_SO(){return this->version_SO;}
-	string Phone::Get_Camera_f(){return this->camera_f;}
-	string Phone::Get_Camera_t(){return this->camera_t;}
-	//string Phone::Get_Owner(){return this->owner;}
-	int Phone::Get_Mem_r(){return this->mem_r;}
-	int Phone::Get_Mem_rom(){return this->mem_rom;}
-	int Phone::Get_Weight(){return this->weight;}
-	//int Phone::Get_Num_Phones(){return this->num_Phones;}
-	//UUser::Get_User(){return this->usr}
-	char* Phone::Get_PhoneC(){return this->phoneNumber;}
-	float Phone::Get_Price(){return this->price;}
-	
-
-
-
 	void   Phone::Set_Company(string comp){company=comp;}
 	void   Phone::Set_Model(string mol){model=mol;}
-	void   Phone::Set_Version_SO(string ver){version_SO=ver;}
-	void   Phone::Set_Camera_f(string camf){camera_f=camf;}
-	void   Phone::Set_Camera_t(string camt){camera_t=camt;}
-	//void   Phone::Set_Owner(string own){owner=own;}
-	void   Phone::Set_Mem_r(int memr){mem_r=memr;}
-	void   Phone::Set_Mem_rom(int mem_Rom){mem_rom=mem_Rom;}
-	void   Phone::Set_Weight(int w){weight=w;}
-	//void   Phone::Set_Num_Phones(int num_P){num_Phones=num_P;}
-//	void   Phone::Set_User(User usr){this->usr;}
-	void   Phone::Set_PhoneC(const char* number){
+	void   Phone::Set_Weight(float w){weight=w;}
+	void   Phone::Set_Version(float v){version=v;}
+	void   Phone::Set_Camera_f(float cf){camera_f=cf;}
+	void   Phone::Set_Camera_t(float ct){camera_t=ct;}
+	void   Phone::Set_Mem_ram(int mram){mem_ram=mram;}
+	void   Phone::Set_Mem_rom(int mrom){mem_rom=mrom;}
+	void   Phone::Set_Price(float p){price=p;}
+
+	string Phone::Get_Company(){return company;}
+	string Phone::Get_Model(){return model;}
+	float Phone::Get_Weight(){return weight;}
+	float Phone::Get_Version(){return version;}
+	float Phone::Get_Camera_f(){return camera_f;}
+	float Phone::Get_Camera_t(){return camera_t;}
+	int Phone::Get_Mem_ram(){return mem_ram;}
+	int Phone::Get_Mem_rom(){return mem_rom;}
+	float Phone::Get_Price(){return price;}
+	/*void   Phone::Set_PhoneC(const char* number){
 		char cad[50];
 		while(ValidNumber(number) != true){
 			cout << "Numero Invalido !!!" << endl;
@@ -75,11 +61,12 @@ Phone::~Phone(){
 		}
 		phoneNumber = new char[strlen(number)+1];
 		strcpy(phoneNumber,number);	
-	}
+	}*/
 
-	void   Phone::Set_Price(float price){price=price;}
-	
 /* Metodos */
+	void Phone::Detail_Phone(){
+
+	}
 
 
 /*void Phone::Usuario_P(){
@@ -88,7 +75,7 @@ Phone::~Phone(){
 
 }*/
 
-bool   Phone::ValidNumber(const char* number){
+/*bool   Phone::ValidNumber(const char* number){
 	bool flag=false;
 	int  size=strlen(number);
 	char prefix[]={*number,*(++number)};
@@ -99,4 +86,4 @@ bool   Phone::ValidNumber(const char* number){
 	}
 
 	return flag;
-}
+}*/

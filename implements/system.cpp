@@ -16,12 +16,25 @@ System::System(){
 		if(users == NULL){
 			cout << "No se pudo reservar espacio para guardar usuarios. " << endl;
 		}
+
+	//seteando telefono
+	Set_NumPhones(0);
+	phones=NULL;
+	phones=new Phone[SIZE];
+		if (phones==NULL){
+			cout << "No se pudo reservar espacio para guardar celulares. " << endl;
+
+		}
 }
 
 System::~System(){
 	if(users != NULL){
 		delete [] users;
 	}
+	if (phones!=NULL){
+		delete[] phones;
+	}
+
 }
 
 /* Getters y Setters */
@@ -29,6 +42,10 @@ System::~System(){
 void System::Set_NumUsers(int numUsers){this->numUsers=numUsers;}
 
 int  System::Get_NumUsers(){return numUsers;}
+//Para telefono 
+void System::Set_NumPhones(int numPhones){this->numPhones=numPhones;}
+
+int System::Get_NumPhones(){return numPhones;}
 
 
 /* Metodos */
@@ -85,57 +102,21 @@ void System::PrintUser(int number){
 }
 
 void  System::Detail_Phone(){
+	Phone mi_Phone;
 	cout << endl;
-	cout << "Compania   : " << Get_Company() << endl;
-	cout << "Version SO : " << Get_Version_SO() << endl;
-	cout << "Modelo: " << Get_Model() << endl;
-	cout << "Pixeles camara frontal  : " << Get_Camera_f() << endl;
-	cout << "Pixeles camara trasera  : " << Get_Camera_t() << endl;
-	//cout << "Duenio : " << Get_Owner() << endl;
-	cout << "Capacidad de memoria Ram: " << Get_Mem_r() << endl;
-	cout << "Capacidad de memoria Rom: " << Get_Mem_rom() << endl;
-	cout << "Peso : " << Get_Weight() << endl;
-	cout << "Numero Asignado: " << Get_PhoneC() << endl;
-	cout << "Precio : " << Get_Price() << endl;
+	cout << "Compania   : " << mi_Phone.Get_Company() << endl;
+	cout << "Modelo: " << mi_Phone.Get_Model() << endl;
+	cout << "Version SO : " << mi_Phone.Get_Version() << endl;
+	cout << "Pixeles camara frontal  : " << mi_Phone.Get_Camera_f() << endl;
+	cout << "Pixeles camara trasera  : " << mi_Phone.Get_Camera_t() << endl;
+	cout << "Capacidad de memoria Ram: " << mi_Phone.Get_Mem_ram() << endl;
+	cout << "Capacidad de memoria Rom: " << mi_Phone.Get_Mem_rom() << endl;
+	cout << "Peso : " << mi_Phone.Get_Weight() << endl;
+	cout << "Precio : " << mi_Phone.Get_Price() << endl;
 
 }
 
 
-bool System::NewPhone(){
-	Phone tel;
-	
-	string company="Telcel";
-	string model="Uawey 2.5";
-	string version_SO="android 2.5";
-	string camera_f="13 mega pixels";
-	string camera_t="12 Mpx";
-	//string owner;
-	int mem_r=8;
-	int mem_rom=2;
-	int weight=8;
-	//int num_Phones;
-	//User* contact;
-	char number[50];
-	float  price=1255.00;
-
-	
-
-	tel.Set_Company(company);
-	tel.Set_Model(model);
-	tel.Set_Version_SO(version_SO);
-	tel.Set_Camera_f(camera_f);
-	tel.Set_Camera_t(camera_t);
-	tel.Set_Mem_r(mem_r);
-	tel.Set_Mem_rom(mem_rom);
-	tel.Set_Weight(weight);
-	tel.Set_PhoneC(number);
-	tel.Set_Price(price);
-	flag =true;
-
-	return flag;
-
-
-}
 
 bool  System::NewUser(){
 	
@@ -201,7 +182,72 @@ bool  System::NewUser(){
 }
 
 
-bool  System::BuyPhone(){}
+bool  System::BuyPhone(){
+	Phone mi_tel;
+	string company;
+	string model;
+	float weight;
+	float version;
+	float camera_f;
+	float camera_t;
+	int mem_ram;
+	int mem_rom;
+	float price;
+	//bandera para saber si se almaceno el telefono
+	int numP=Get_NumPhones();
+	bool flag=false;
+
+	cout<<"Ingresa los datos del celular :"<<endl;
+	cout<<"Ingresa la Compania del celular : ";
+	cin>>company;
+	cout<<"Ingresa la Modelo del celular : ";
+	cin>>model;
+	cout<<"Ingresa el Peso del celular : ";
+	cin>>weight;
+	cout<<"Ingresa la Version del Sistema OP : ";
+	cin>>version;
+	cout<<"Ingresa los pixeles de la camara frontal : ";
+	cin>>camera_f;
+	cout<<"Ingresa los pixeles de la camara trasera : ";
+	cin>>camera_t;
+	cout<<"Capacidad de memoria ram : ";
+	cin>>mem_ram;
+	cout<<"Capacidad de memoria rom : ";
+	cin>>mem_rom;
+	cout<<"Precio del celular : ";
+	cin>>price;
+	//seteando los valores 
+	mi_tel.Set_Company(company);
+	mi_tel.Set_Model(model);
+	mi_tel.Set_Weight(weight);
+	mi_tel.Set_Version(version);
+	mi_tel.Set_Camera_f(camera_f);
+	mi_tel.Set_Camera_t(camera_t);
+	mi_tel.Set_Mem_ram(mem_ram);
+	mi_tel.Set_Mem_rom(mem_rom);
+	mi_tel.Set_Price(price);
+
+	//viendo el espacio de almacenamiento para celulares
+	if(numP<SIZE){
+		phones[numP]=mi_tel;
+		Set_NumPhones(numP+1);
+		flag=true;
+	}
+	else{
+		Phone *new_Phone=new Phone[Get_NumPhones()+SIZE];
+		if(new_Phone==NULL){
+			cout<<"No se pueden almacenar mas celulares en la memoria !"<<endl;
+		}else{
+			//reservando memoria y copiando los datos anteriores a la nueva memoria
+			memcpy(new_Phone,phones,Get_NumPhones()*sizeof(Phone));
+			phones=new_Phone;			
+		}
+		phones[numP]=mi_tel;
+		Set_NumPhones(numP+1);
+		flag=true;
+	}
+	return flag;
+}
 
 User* System::FindUser(string name){
 	User *user = NULL;
@@ -265,3 +311,13 @@ User* System::FindUser(int number){
 	}
 	return user;	
 }
+
+
+/*void System::Detail_Phone(){
+		
+	
+}*/
+
+
+
+
