@@ -1,5 +1,5 @@
 #include <iostream>
-#include "user.h"
+
 #ifndef PHONE_H
 #define PHONE_H
 
@@ -18,7 +18,7 @@ private:
 	int mem_rom;
 	int weight;
 	
-	User* contact;
+	//User* contact;
 	char* phoneNumber;
 	float  price;
 	string MiPhoneNumber;
@@ -41,7 +41,7 @@ public:
 	void   Set_Mem_r(int);
 	void   Set_Mem_rom(int);
 	void   Set_Wight(int);
-	void   Set_User(User*);
+	//void   Set_User(User*);
 	void   Set_PhoneC(char*);
 	void   Set_Price(float);
 	void   Set_PhoneNumber(string);
