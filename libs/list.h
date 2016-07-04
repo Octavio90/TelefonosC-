@@ -1,5 +1,6 @@
 #include <iostream>
 #include "node.h"
+#include "user.h"
 #ifndef LIST_H
 #define LIST_H
 
@@ -10,10 +11,12 @@ class List{
 private:
 	Node *first;
 	Node *last;
+	int   numElements;
 public:
 	List();
+	int  Get_NumElements();
 	bool Empty();
-	void NewElement();
+	void NewElement(User &);
 	void PrintALL();
 	void FindByName(string);
 	void FindByNumPhones(int);

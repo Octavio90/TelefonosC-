@@ -8,26 +8,16 @@ using namespace std;
 List::List(){
 	first = NULL;
 	last  = NULL;
+	numElements = 0;
 }
 
 bool List::Empty(){
 	return (first==NULL);
 }
 
-void List::NewElement(){
-	string name;
-	string address;
-	float  credit;
-	int    number;
-	cout << "Nombre: " ;
-	cin  >> name;
-	cout << "Direccion: ";
-	cin  >> address;
-	cout << "Credito: ";
-	cin  >> credit;
-	cout << "Numero de Telefonos: ";
-	cin  >> number;		
-	User user(name,address,credit,number); 
+int List::Get_NumElements(){return numElements;}
+
+void List::NewElement(User &user){		 
 	Node *temp = new Node(user);
 	if(Empty() == true){
 		first = temp;
@@ -36,6 +26,7 @@ void List::NewElement(){
 		last->next = temp;
 		last = temp;
 	}
+	numElements ++;
 }
 
 void List::PrintALL(){
@@ -43,9 +34,6 @@ void List::PrintALL(){
 		cout << "Lista Vacia " << endl;
 	}else{
 		Node *aux = first;
-		cout << "Los elementos son:" << endl;
-		cout << "-----------------------------" << endl;
-		cout << "-----------------------------" << endl; 
 		while(aux != NULL){
 			aux->Get_Element()->Detail();
 			cout << "-----------------------------" << endl;
@@ -60,10 +48,7 @@ void List::FindByName(string name){
 	if(Empty() == true){
 		cout << "No se encontro ninguna coincidencia !!! " << endl;
 	}else{
-		Node *aux = first;
-		cout << "-----------------------------" << endl;
-		cout << "\tResultado Busqueda"<<endl;
-		cout << "-----------------------------" << endl; 
+		Node *aux = first; 
 		while(aux != NULL){
 			if(aux->Get_Element()->Get_Name() == name){
 				aux->Get_Element()->Detail();
@@ -81,9 +66,7 @@ void List::FindByNumPhones(int number){
 		cout << "No se encontro ninguna coincidencia !!! " << endl;
 	}else{
 		Node *aux = first;
-		cout << "-----------------------------" << endl;
-		cout << "\tResultado Busqueda"<<endl;
-		cout << "-----------------------------" << endl; 
+		cout << endl; 
 		while(aux != NULL){
 			if(aux->Get_Element()->Get_NumPhones() == number){
 				aux->Get_Element()->Detail();

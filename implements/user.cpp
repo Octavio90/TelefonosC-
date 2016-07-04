@@ -16,11 +16,11 @@ User::User(string name,string address){
 	Set_NumPhones(0);	
 }
 
-User::User(string name,string address,float credit,int num){
+User::User(string name,string address,float credit){
 	Set_Name(name);
 	Set_Address(address);
 	Set_Credit(credit);
-	Set_NumPhones(num);			
+	Set_NumPhones(0);			
 }
 
 User::~User(){}

@@ -1,172 +1,92 @@
 #include <iostream>
 #include <string.h>
-#define  SIZE 1
 #include "../libs/system.h"
+#include "../libs/list.h"
 #include "../libs/user.h"
 
 using namespace std;
 
 
 /* Constructores y Destructores */
-System::System(){
-	Set_NumUsers(0);
-	users = NULL;
-	users = new User[SIZE];
-		if(users == NULL){
-			cout << "No se pudo reservar espacio para guardar usuarios. " << endl;
-		}
-}
+System::System(){}
 
-System::~System(){
-	if(users != NULL){
-		/*for(int i=0;i<Get_NumUsers();i++){
-		    delete (users+i);
-		}*/
-		delete [] users;
-	}
-}
+System::~System(){}
 
 /* Getters y Setters */
-
-void System::Set_NumUsers(int numUsers){this->numUsers=numUsers;}
-
-int  System::Get_NumUsers(){return numUsers;}
-
-
-/* Metodos */
-void  System::PrintBill(){}
-
-void  System::PrintAllUsers(){
-	User *user = users;
+void System::NewUser(){
+	string name;
+	string address;
+	float  credit; 
 	cout << endl;
-	cout << "-------------------------------------" << endl;
-	cout << "-------------------------------------" << endl;
+	cout << "Nombre: " ;
+	cin  >> name;
+	cout << "Direccion: " ;
+	cin  >> address;
+	cout << "Credito: " ;
+	cin  >> credit;
 
-	for(int i=0;i<Get_NumUsers();i++){
-		(user+i)->Detail();
-		cout << "-------------------------------------" << endl;
-	}
-	cout << "-------------------------------------" << endl << endl;
+	User user(name,address,credit);
+	users.NewElement(user);
+	cout << "Usuario registrado exitosamente !!!"<< endl;
 }
 
-void  System::PrintUser(string name){
-	User* user = FindUser(name);
-	cout << endl;
-	cout << "-------------------------------------" << endl;
-	cout << "-------------------------------------" << endl;
-	if(user != NULL)
-		user->Detail();
-	else
-		cout << "Usuario NO encontrado." << endl; 
-	cout << "-------------------------------------" << endl;
-	cout << "-------------------------------------" << endl << endl;
+void System::PrintAllUsers(){
+	PrintMessage();
+	users.PrintALL();
 }
 
-void  System::PrintUser(char* phone){
-	User* user = FindUser(phone);
-	cout << "-------------------------------------" << endl;
-	cout << "-------------------------------------" << endl;
-	if(user != NULL)
-		user->Detail();
-	else
-		cout << "Usuario NO encontrado." << endl; 
-	cout << "-------------------------------------" << endl;
-	cout << "-------------------------------------" << endl << endl; 
+int System::NumUsers(){
+	return users.Get_NumElements();
 }
 
-bool  System::NewUser(){
+void System::FindUser(){
 	
-	float  credit;
-	int    itemp;
 	char   op;
-	char   number[50];
-	string stemp = "";
-	bool   flag  = false;
-	int    idx   = Get_NumUsers();
+	int    itemp;
+	string stemp;
 
-	
-	while(stemp == ""){
-		cout << endl << "Nombre de la Persona: ";
-		cin  >> stemp;
-		if(stemp == ""){
-			cout << "El nombre debe tener almenos un caracter !!!" << endl;
-		}
-	}
-	cout << "Numero Telefonico: ";
-	cin  >> number;
-	User user(stemp,number);
-
-	cout << "Quieres ingresar los demas datos? (y/n):";
+	while(op != '0'){
+	stemp = "";
+	itemp = 0;
+	cout << endl;
+	cout << "\tBuscar por:"  << endl;
+	cout << "1-Por nombre." << endl;
+	cout << "2-Por numero telefonico." << endl;
+	cout << "3-Por cantidad de telefonos." << endl;
+	cout << "0-Regresar al menu principal" << endl; 
+	cout << endl << "Seleccione una opcion: ";
 	cin  >> op;
 
-	if(op == 'y' || op == 'Y'){
-		stemp = "";
-		cout << "Direccion: ";
-		cin  >> stemp;
-		user.Set_Address(stemp);	
-
-		cout << "Credito: ";
-		cin  >> credit;
-		user.Set_Credit(credit);
-
-		cout << "Cantidad de Telefonos: ";
-		cin  >> itemp;
-		user.Set_NumPhones(itemp);		
-	}
-	
-	if(idx < SIZE){
-		users[idx] = user;
-		Set_NumUsers(idx+1);
-		flag=true;	
-	}
-	else{
-		User *users2 = new User[Get_NumUsers()+SIZE];
-		if(users2 == NULL){
-			cout << "Memoria insuficiente !!! " << endl;
+		switch(op){
+			case '1':
+				cout << endl << "Ingrese el nombre del usuario: ";
+				cin  >> stemp;
+				PrintMessage();
+				users.FindByName(stemp);
+				break;
+			case '2':
+				cout << endl << "Ingrese el numero telefonico: ";
+				//cin  >> stemp;
+				//users.FindByName(stemp);
+				break;
+			case '3':
+				cout << endl << "Cantidad de telefonos a buscar: ";
+				cin  >> itemp;
+				PrintMessage();
+				users.FindByNumPhones(itemp);
+				break;
+			case '0':
+				break;
+			default:
+				cout << "Opcion invalida !!! " << endl << endl;
+				break;
 		}
-		else{
-			memcpy( users2, users, Get_NumUsers()*sizeof(User));
-			//delete[] users;
-			users = users2;
-		}
-		users[idx] = user;
-		Set_NumUsers(idx+1);
-		flag=true;
 	}
-	
-	return flag;
 }
 
-
-bool  System::BuyPhone(){}
-
-User* System::FindUser(string name){
-	User *user = NULL;
-	for(int i=0;i<Get_NumUsers();i++){
-		user = (users+i);
-		if(user->Get_Name() == name){
-			return user;
-		}
-		else{
-			user = NULL;
-		}
-	}
-	return user;
+void System::PrintMessage(){
+	cout << endl;
+	cout << "-----------------------------" << endl;
+	cout << "\tResultado Busqueda"<<endl;
+	cout << "-----------------------------" << endl;
 }
-
-User* System::FindUser(char* phone){
-	/* Pendiente */
-	User *user = NULL;
-	for(int i=0;i<Get_NumUsers();i++){
-		user = (users+i);
-		if(user->Get_PhoneNumber() == phone){
-			return user;
-		}
-		else{
-			user = NULL;
-		}
-	}
-	return user;	
-}
-
-User* System::FindUser(string name,char* phone){}

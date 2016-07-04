@@ -15,7 +15,7 @@ public:
 	/*Constructores y Destructores*/
 	User();
 	User(string,string);
-	User(string,string,float,int);
+	User(string,string,float);
 	~User();
 
 	
