@@ -28,11 +28,11 @@ public:
 	/*Getters and Setters*/
 	void Set_NumUsers(int);
 	//telefono
-	void Set_NumPhones(int);
+	void Set_Num_Phones(int);
 
 	int  Get_NumUsers();
 	//getter telefono
-	int Get_NumPhones();
+	int Get_Num_Phones();
 	
 	/*Metodos*/ 
 	bool  NewUser();
@@ -43,7 +43,7 @@ public:
 	void  PrintUser(char *);
 	void  PrintAllUsers();
 	//metodos de telefono
-	void  Detail_Phone();
+	void  PrintPhones();
 };
 
 #endif

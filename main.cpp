@@ -14,7 +14,6 @@ int main(){
 	char   opcion;
 	bool   flag;
 
-	Phone nuevoTel;
 	cout << endl << endl << "\tBienvenido " << endl << endl;
 
 
@@ -22,7 +21,8 @@ int main(){
 	cout << "\tMenu - Usuarios Resgistrados (" << system.Get_NumUsers() << ")" << endl;	
 	cout << "1-Ingresar un nuevo Usario." << endl;
 	cout << "2-Registra compra de telefono." << endl;
-	cout << "3-Imprimir factura." << endl;
+	//cout << "3-Imprimir factura." << endl;
+	cout << "3-Telefonos Resgistrados." << endl;
 	cout << "4-Buscar usuario por nombre." << endl;
 	cout << "5-Buscar usuario por telefono." << endl;
 	cout << "6-Buscar usuario por cantidad de telefonos." << endl;
@@ -39,9 +39,19 @@ int main(){
 					cout << "Usuario ingresado correctamente !" << endl << endl;
 				else
 					cout << "Ocurrio un problema, intente nuevamente " << endl << endl;
-				break;/*
+				break;
 			case '2':
-				flag=system.*/
+				flag=system.BuyPhone();
+				if(flag==true){
+
+					cout<<"el celular se ingreso correctamente"<<endl;
+					}
+				else
+					cout<<"Ocurio un problema, intentelo de nuevo "<<endl;
+				break;
+			
+			case '3':
+				system.PrintPhones();
 			case '4':
 				cout << endl;
 				cout << "Ingresa el nombre del usario: "; 
@@ -63,14 +73,6 @@ int main(){
 			case '7':
 				system.PrintAllUsers();
 				break;
-			/*case '6':
-				flag=system.NewPhone();
-				if (flag==true){
-					cout<< "El telefono se ingreso correctamente : "<<endl;
-					system.Detail_Phone();}
-				else
-					cout<<"Ocurrio un problema"<<endl;
-				break;*/
 			case '0':
 				break;
 			default:
