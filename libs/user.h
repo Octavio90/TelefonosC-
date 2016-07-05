@@ -11,11 +11,12 @@ private:
 	string  address;
 	float   credit;
 	int     numPhones;
+	int 	idUser;
 public:
 	/*Constructores y Destructores*/
 	User();
 	User(string,string);
-	User(string,string,float);
+	User(string,string,float,int);
 	~User();
 
 	
@@ -24,13 +25,15 @@ public:
 	void   Set_Address(string);
 	void   Set_Credit(float);
 	void   Set_NumPhones(int);
+	void   Set_IdUser(int);
 
 	string  Get_Name();
 	string  Get_Address();
 	float   Get_Credit();
 	int     Get_NumPhones();
-	/*Metodos*/ 
-
+	int     Get_IdUser();
+	 
+	/*Metodos*/
 	void Detail();
 };
 

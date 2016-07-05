@@ -17,8 +17,8 @@ bool List::Empty(){
 
 int List::Get_NumElements(){return numElements;}
 
-void List::NewElement(User &user){		 
-	Node *temp = new Node(user);
+void List::NewElement(User &user){
+	Node<User> *temp = new Node<User>(user);
 	if(Empty() == true){
 		first = temp;
 		last  = temp;
@@ -33,7 +33,7 @@ void List::PrintALL(){
 	if(Empty() == true){
 		cout << "Lista Vacia " << endl;
 	}else{
-		Node *aux = first;
+		Node<User> *aux = first;
 		while(aux != NULL){
 			aux->Get_Element()->Detail();
 			cout << "-----------------------------" << endl;
@@ -48,7 +48,7 @@ void List::FindByName(string name){
 	if(Empty() == true){
 		cout << "No se encontro ninguna coincidencia !!! " << endl;
 	}else{
-		Node *aux = first; 
+		Node<User> *aux = first; 
 		while(aux != NULL){
 			if(aux->Get_Element()->Get_Name() == name){
 				aux->Get_Element()->Detail();
@@ -65,7 +65,7 @@ void List::FindByNumPhones(int number){
 	if(Empty() == true){
 		cout << "No se encontro ninguna coincidencia !!! " << endl;
 	}else{
-		Node *aux = first;
+		Node<User> *aux = first;
 		cout << endl; 
 		while(aux != NULL){
 			if(aux->Get_Element()->Get_NumPhones() == number){
@@ -77,3 +77,21 @@ void List::FindByNumPhones(int number){
 		cout << "-----------------------------" << endl;
 	}
 }
+
+User* List::FindByID(int id){
+	User *temp = NULL;
+	if(Empty() == true){
+		cout << "Lista Vacia !!! " << endl;
+	}else{
+		Node<User> *aux = first;
+		cout << endl; 
+		while(aux != NULL){
+			if(aux->Get_Element()->Get_IdUser() == id){
+				return aux->Get_Element();
+			}
+			aux = aux->next; 
+		}
+	}
+	return temp;
+}
+

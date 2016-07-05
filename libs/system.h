@@ -21,6 +21,7 @@ public:
 	void PrintAllUsers();
 	int  NumUsers();
 	void PrintMessage();
+	void ModifyUsers();
 };
 
 #endif

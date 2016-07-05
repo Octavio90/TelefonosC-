@@ -16,7 +16,8 @@ int main(){
 	cout << "2-Registra compra de telefono." << endl;
 	cout << "3-Imprimir factura." << endl;
 	cout << "4-Buscar usuarios." << endl;
-	cout << "5-Mostrar todos usarios." << endl;
+	cout << "5-Modificar usuarios." << endl;
+	cout << "6-Mostrar todos usarios." << endl;
 	cout << "0-Salir." << endl;
 
 	
@@ -34,6 +35,9 @@ int main(){
 				system.FindUser();
 				break;
 			case '5':
+				system.ModifyUsers();
+				break;
+			case '6':
 				system.PrintAllUsers();
 				break;
 			case '0':
