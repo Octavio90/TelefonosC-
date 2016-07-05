@@ -14,20 +14,25 @@ public:
 	T        element;
 	Node<T> *next;
 
-	Node(T &);
+	Node(User &);
+	Node(Phone &);
 	T* Get_Element();
 };
 
 template <class T>
-Node<T>::Node(T &t){
-	element.Set_Name(t.Get_Name());
-	element.Set_Address(t.Get_Address());
-	element.Set_Credit(t.Get_Credit());
-	element.Set_NumPhones(t.Get_NumPhones());
-	element.Set_IdUser(t.Get_IdUser());
+Node<T>::Node(User &user){
+	element.Set_Name(user.Get_Name());
+	element.Set_Address(user.Get_Address());
+	element.Set_Credit(user.Get_Credit());
+	element.Set_NumPhones(user.Get_NumPhones());
+	element.Set_IdUser(user.Get_IdUser());
 	next    = NULL;	
 } 
 
+template <class T>
+Node<T>::Node(Phone &phone){
+	next    = NULL;	
+} 
 
 template <class T>
 T* Node<T>::Get_Element(){

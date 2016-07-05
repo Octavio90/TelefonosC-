@@ -1,4 +1,4 @@
-#include <iostream>
+/*#include <iostream>
 #include <string>
 #include "../libs/node.h"
 #include "../libs/user.h"
@@ -21,4 +21,4 @@ Node<T>::Node(T &t){
 template <class T>
 T* Node<T>::Get_Element(){
 	return &element;
-}
+}*/
