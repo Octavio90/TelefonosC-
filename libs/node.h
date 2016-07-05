@@ -31,6 +31,15 @@ Node<T>::Node(User &user){
 
 template <class T>
 Node<T>::Node(Phone &phone){
+	element.Set_Company(phone.Get_Company());
+	element.Set_Model(phone.Get_Model());
+	element.Set_Weight(phone.Get_Weight());
+	element.Set_Version(phone.Get_Version());
+	element.Set_Camera_f(phone.Get_Camera_f());
+	element.Set_Camera_t(phone.Get_Camera_t());
+	element.Set_Mem_ram(phone.Get_Mem_ram());
+	element.Set_Mem_rom(phone.Get_Mem_rom());
+	element.Set_Price(phone.Get_Price());
 	next    = NULL;	
 } 
 

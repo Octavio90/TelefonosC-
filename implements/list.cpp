@@ -1,4 +1,4 @@
-#include <iostream>
+/*#include <iostream>
 #include <string>
 #include "../libs/list.h"
 #include "../libs/node.h"
@@ -93,5 +93,5 @@ User* List::FindByID(int id){
 		}
 	}
 	return temp;
-}
+}*/
 

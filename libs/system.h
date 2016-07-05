@@ -9,7 +9,7 @@ using namespace std;
 
 class System{
 public:
-	List users;
+	List<User> users;
 
 	/*Constructores y Destructores*/
 	System();
