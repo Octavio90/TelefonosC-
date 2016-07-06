@@ -9,8 +9,9 @@ using namespace std;
 
 class System{
 public:
-	List<User>  users;
-	List<Phone> phones;
+	List<User>   users;
+	List<Phone>  phones;
+	//List<Bill>   bills;
 
 	/*Constructores y Destructores*/
 	System();
