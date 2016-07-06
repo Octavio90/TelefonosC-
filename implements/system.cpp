@@ -367,19 +367,23 @@ void System::ModifyPhone(){
 				cin  >> opcion;	
 					switch(opcion){
 						case 1:
-							version = "Android";
+							stemp = "Android";
+							phone->Set_Version(stemp);
+							stemp="";
 							break;
 						case 2:
-							version = "iOS";
+							stemp  = "iOS";
+							phone->Set_Version(stemp);
+							stemp="";
 							break;
 						default:
 							cout << "Opcion invalida, asignando valor por default (Android)" << endl;
-							version = "Android";
+							stemp = "Android";
+							phone->Set_Version(stemp);
+							stemp="";
 							break;
 					}
-				cin  >> stemp;
-				phone->Set_Version(stemp);
-				stemp="";
+				
 				break;
 			case 4:
 				cout << "Ingrese el peso : " ;
