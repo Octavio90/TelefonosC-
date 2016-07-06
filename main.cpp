@@ -29,28 +29,37 @@ int main(){
 		cin  >> opcion;
 		switch(opcion){
 			case '1':
+				cout << "\033[2J\033[1;1H";
 				system.NewUser();
 				break;
 			case '2':
+				cout << "\033[2J\033[1;1H";
+				system.BuyPhone();
 				break;
 			case '3':
 				break;
 			case '4':
+				cout << "\033[2J\033[1;1H";
 				system.FindUser();
 				break;
 			case '5':
+				cout << "\033[2J\033[1;1H";
 				system.ModifyUser();
 				break;
 			case '6':
+				cout << "\033[2J\033[1;1H";
 				system.PrintAllUsers();
 				break;
 			case '7':
+				cout << "\033[2J\033[1;1H";
 				system.NewPhone();
 				break;
 			case '8':
+				cout << "\033[2J\033[1;1H";
 				system.PrintAllPhones();
 				break;
 			case '9':
+				cout << "\033[2J\033[1;1H";
 				system.FindPhone();
 				break;
 			case '0':

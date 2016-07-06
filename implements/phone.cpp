@@ -76,6 +76,8 @@ void Phone::Detail(){
 	cout << "Peso             : " << Get_Weight() << " kg" << endl;
 	cout << "Version          : " << Get_Version() << endl;
 	cout << "Precio           : $" << Get_Price() << endl;
+	cout << "Memoria RAM      : " << Get_Mem_ram() << " MB" << endl;
+	cout << "Memoria ROM      : " << Get_Mem_rom() << " MB" << endl;
 	cout << "Camara Frontal   : " << Get_Camera_f() << " Mpx" << endl;
 	cout << "Camara Trasera   : " << Get_Camera_t() << " Mpx" << endl;
 	if(Get_PhoneNumber() != "")

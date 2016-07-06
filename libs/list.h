@@ -24,7 +24,7 @@ public:
 	
 	void   FindByModel(string);
 	void   FindByPrice(float);
-	Phone* FindByPhoneNumber(char *);
+	Phone* FindByPhoneNumber(string);
 };
 
 template <class T>
@@ -164,7 +164,7 @@ void List<T>::FindByPrice(float price){
 }
 
 template<class T>
-Phone* List<T>::FindByPhoneNumber(char* phoneNumber){
+Phone* List<T>::FindByPhoneNumber(string phoneNumber){
 	Phone *temp=NULL;
 	if(Empty()==true){
 		cout<<"Lista de numeros Vacia!!! "<<endl;

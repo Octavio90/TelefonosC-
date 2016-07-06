@@ -314,5 +314,38 @@ void System::ModifyPhone(){
 
 void System::BuyPhone(){
 
+	int    itemp;
+	string stemp;
+	User   *user;
+	Phone  *phone;
+
+	cout << endl;
+	cout << endl << "Ingrese el ID del usuario :";
+	cin  >> itemp;
+	user = users.FindByID(itemp);
+	PrintMessage();
+		if(user != NULL)
+			user->Detail();
+		else
+			cout << "Usuario no encontrado" << endl;
+	cout << "-----------------------------" << endl;
+	cout << "-----------------------------" << endl;
+	cout << endl;
+
+	if(user != NULL){
+
+		cout << endl << "Ingrese el numero telefonico :";
+		cin  >> stemp;
+		phone = phones.FindByPhoneNumber(stemp);
+		PrintMessage();
+		if(phone != NULL)
+			phone->Detail();
+		else
+			cout << "Usuario no encontrado" << endl;
+		cout << "-----------------------------" << endl;
+		cout << "-----------------------------" << endl;
+		cout << endl;
+		
+	}
 }
 
