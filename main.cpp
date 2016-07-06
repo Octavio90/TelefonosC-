@@ -9,7 +9,7 @@ int main(){
 
 	cout << endl << endl << "\t\tBienvenido " << endl;
 
-	while(opcion != '0'){
+	while(opcion != 0){
 	cout << endl;
 	cout << "\tMenu - Usuarios  Resgistrados (" << system.NumUsers() << ")" << endl;	
 	cout << "\t       Telefonos Resgistrados (" << system.NumPhones() << ")" << endl;
