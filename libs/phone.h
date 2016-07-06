@@ -11,14 +11,14 @@ private:
 	string company;
 	string model;
 	string version;
+	string phoneNumber;
+	User*  owner;
 	float  weight;
 	float  camera_f;
 	float  price;
 	float  camera_t;
 	int    mem_ram;
 	int    mem_rom;
-	char*  phoneNumber;
-	User*  owner;
 
 	
 public:
@@ -38,19 +38,20 @@ public:
 	void   Set_Mem_ram(int);
 	void   Set_Mem_rom(int);
 	void   Set_Price(float);
+	void   Set_PhoneNumber(string);
 	void   Set_PhoneNumber(const char*);
 	void   Set_Owner(User*);
 
 	string Get_Company();
 	string Get_Model();
 	string Get_Version();
+	string Get_PhoneNumber();
 	float  Get_Weight();
 	float  Get_Camera_f();
 	float  Get_Camera_t();
 	float  Get_Price();
 	int    Get_Mem_ram();
 	int    Get_Mem_rom();
-	char*  Get_PhoneNumber();
 	User*  Get_Owner();
 
 	/*Metodos*/

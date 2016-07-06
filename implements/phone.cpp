@@ -19,7 +19,6 @@ Phone::Phone(string comp, string model,string version,float weight,float cameraf
 	Set_Mem_ram(mem_ram);
 	Set_Mem_rom(mem_rom);
 	Set_Price(price);
-	phoneNumber = NULL;
 	Set_Owner(NULL);
 
 }
@@ -29,6 +28,7 @@ Phone::~Phone(){}
 string Phone::Get_Company(){return company;}
 string Phone::Get_Model(){return model;}
 string Phone::Get_Version(){return version;}
+string Phone::Get_PhoneNumber(){return phoneNumber;}
 float  Phone::Get_Weight(){return weight;}
 float  Phone::Get_Camera_f(){return camera_f;}
 float  Phone::Get_Camera_t(){return camera_t;}
@@ -36,7 +36,6 @@ float  Phone::Get_Price(){return price;}
 int    Phone::Get_Mem_ram(){return mem_ram;}
 int    Phone::Get_Mem_rom(){return mem_rom;}
 User*  Phone::Get_Owner(){return owner;}
-char*  Phone::Get_PhoneNumber(){return phoneNumber;}
 
 void   Phone::Set_Company(string comp){company=comp;}
 void   Phone::Set_Model(string mol){model=mol;}
@@ -48,6 +47,7 @@ void   Phone::Set_Mem_ram(int mram){mem_ram=mram;}
 void   Phone::Set_Mem_rom(int mrom){mem_rom=mrom;}
 void   Phone::Set_Price(float p){price=p;}
 void   Phone::Set_Owner(User *owner){this->owner = owner;}
+void   Phone::Set_PhoneNumber(string number){phoneNumber = number;}
 void   Phone::Set_PhoneNumber(const char *number){
 	if(number !=NULL){
 		char cad[25];
@@ -58,11 +58,8 @@ void   Phone::Set_PhoneNumber(const char *number){
 			cin  >> cad;
 			number = cad;
 		}
-		if(phoneNumber != NULL){
-			delete [] phoneNumber;
-		}
-		phoneNumber = new char[strlen(number)+1];
-		strcpy(phoneNumber,number);
+		string temp(number);
+		phoneNumber = temp;
 	}
 }
 
@@ -78,13 +75,13 @@ void Phone::Detail(){
 	cout << "Modelo           : " << Get_Model() << endl;
 	cout << "Peso             : " << Get_Weight() << " kg" << endl;
 	cout << "Version          : " << Get_Version() << endl;
-	cout << "Precio           : $ " << Get_Price() << endl;
+	cout << "Precio           : $" << Get_Price() << endl;
 	cout << "Camara Frontal   : " << Get_Camera_f() << " Mpx" << endl;
 	cout << "Camara Trasera   : " << Get_Camera_t() << " Mpx" << endl;
-	/*if(Get_PhoneNumber() != NULL)
+	if(Get_PhoneNumber() != "")
 		cout << "Numero Telefonico: " << Get_PhoneNumber() << endl;
 	else
-		cout << "Numero Telefonico: Sin numero asignado." << endl;*/
+		cout << "Numero Telefonico: Sin numero asignado." << endl;
 }
 
 

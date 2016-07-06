@@ -7,11 +7,11 @@ using namespace std;
 
 class User{
 private:
-	string  name;
-	string  address;
-	float   credit;
 	int     numPhones;
 	int 	idUser;
+	float   credit;
+	string  name;
+	string  address;
 
 public:
 	/*Constructores y Destructores*/
@@ -19,7 +19,6 @@ public:
 	User(string,string);
 	User(string,string,float,int);
 	~User();
-
 	
 	/*Getters and Setters*/ 
 	void   Set_Name(string);
@@ -28,14 +27,14 @@ public:
 	void   Set_NumPhones(int);
 	void   Set_IdUser(int);
 
-	string  Get_Name();
-	string  Get_Address();
-	float   Get_Credit();
-	int     Get_NumPhones();
-	int     Get_IdUser();
+	string Get_Name();
+	string Get_Address();
+	float  Get_Credit();
+	int    Get_NumPhones();
+	int    Get_IdUser();
 	 
 	/*Metodos*/
-	void Detail();
+	void   Detail();
 };
 
 #endif

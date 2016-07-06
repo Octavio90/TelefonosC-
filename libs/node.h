@@ -40,8 +40,8 @@ Node<T>::Node(Phone &phone){
 	element.Set_Mem_ram(phone.Get_Mem_ram());
 	element.Set_Mem_rom(phone.Get_Mem_rom());
 	element.Set_Price(phone.Get_Price());
-	element.Set_PhoneNumber(phone.Get_PhoneNumber());
 	element.Set_Owner(phone.Get_Owner());
+	element.Set_PhoneNumber(phone.Get_PhoneNumber());
 	next    = NULL;	
 } 
 

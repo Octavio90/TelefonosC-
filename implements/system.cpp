@@ -4,7 +4,6 @@
 #include <stdlib.h>
 #include "../libs/system.h"
 #include "../libs/list.h"
-#include "../libs/user.h"
 
 using namespace std;
 
@@ -22,15 +21,14 @@ void System::NewUser(){
 	float  credit;
 	int    id = users.Get_NumElements(); 
 	cout << endl;
-	//cin.ignore(256,'\n');
+	cin.ignore(256,'\n');
 	cout << "Nombre: " ;
-	cin  >> name;
-	//getline(cin,name);
-	//cin.ignore(256,'\n');
+	getline(cin,name);
+	
 	cout << "Direccion: " ;
-	//getline(cin,name);
-	cin  >> address;
-	cout << "Credito: " ;
+	getline(cin,address);
+	
+	cout << "Credito: $" ;
 	cin  >> credit;
 
 	User user(name,address,credit,1000+id);
@@ -47,22 +45,25 @@ void System::NewPhone(){
 	float  camera_t;
 	int    mem_ram;
 	int    mem_rom;
+	int    opcion;
 	float  price; 
-	char   opcion;
 	char   phoneNumber[15];
 
 	cout << endl;
-	cout << "Compañia: " ;
-	cin  >> company;
+	cin.ignore(256,'\n');
+	cout << "Compania: " ;
+	getline(cin,company);
+
 	cout << "Modelo: " ;
-	cin  >> model;
+	getline(cin,model);
+
 	cout << "Version (1-Android (default) / 2-iOS): " ;
 	cin  >> opcion;	
 		switch(opcion){
-			case '1':
+			case 1:
 				version = "Android";
 				break;
-			case '2':
+			case 2:
 				version = "iOS";
 				break;
 			default:
@@ -85,18 +86,16 @@ void System::NewPhone(){
 
 	Phone phone(company,model,version,weight,camera_f,camera_t,mem_ram,mem_rom,price);
 
- 	cout << endl << "Deseas Ingresar numero telfonico ? (y/n): ";
+ 	cout << endl << "Deseas Ingresar numero telfonico ? (1-Si / 2-No): ";
  	cin  >> opcion;
  		switch(opcion){
- 			case 'Y':
-			case 'y':
+			case 1:
 				cout << endl;
 				cout << "Ingrese el numero telefonico: ";
 				cin  >> phoneNumber;
 				phone.Set_PhoneNumber(phoneNumber);
 				break;
-			case 'N':
-			case 'n':
+			case 2:
 				break;
 			default:
 				cout << "Opcion invalida, numero no asignado" << endl;
@@ -143,11 +142,11 @@ void System::FindUser(){
 	cout << "0-Regresar al menu principal" << endl; 
 	cout << endl << "Seleccione una opcion: ";
 	cin  >> op;
-
+	cin.ignore(256,'\n');
 		switch(op){
 			case '1':
 				cout << endl << "Ingrese el nombre del usuario: ";
-				cin  >> stemp;
+				getline(cin,stemp);
 				PrintMessage();
 				users.FindByName(stemp);
 				break;
@@ -201,10 +200,11 @@ void System::FindPhone(){
 	cout << "0-Regresar al menu principal" << endl; 
 	cout << endl << "Seleccione una opcion: ";
 	cin  >> op;
+	cin.ignore(256,'\n');
 	switch(op){
 		case '1':
 			cout<<endl<<"Ingrese el modelo del telefono : ";
-			cin>>motemp;
+			getline(cin,motemp);
 			PrintMessage();
 			phones.FindByModel(motemp); 
 			break;
@@ -265,16 +265,17 @@ void System::ModifyUser(){
 		cout << "Seleccione una opcion: ";
 		cin  >> op;
 		cout << endl;
+		cin.ignore(256,'\n');
 		switch(op){
 			case '1':
 				cout << "Ingrese nuevo Nombre: " ;
-				cin  >> stemp;
+				getline(cin,stemp);
 				user->Set_Name(stemp);
 				stemp = "";
 				break;
 			case '2':
 				cout << "Ingrese nueva Direccion: " ;
-				cin  >> stemp;
+				getline(cin,stemp);
 				user->Set_Address(stemp);
 				stemp = "";
 				break;
@@ -285,11 +286,11 @@ void System::ModifyUser(){
 				break;
 			case '4':
 				cout << "Ingrese nuevo Nombre: " ;
-				cin  >> stemp;
+				getline(cin,stemp);
 				user->Set_Name(stemp);
 				stemp = "";
 				cout << "Ingrese nueva Direccion: " ;
-				cin  >> stemp;
+				getline(cin,stemp);
 				user->Set_Address(stemp);
 				stemp = "";
 				cout << "Ingrese nuevo Credito: " ;
@@ -309,5 +310,9 @@ void System::ModifyUser(){
 
 
 void System::ModifyPhone(){
+}
+
+void System::BuyPhone(){
+
 }
 

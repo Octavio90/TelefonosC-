@@ -1,5 +1,4 @@
 #include <iostream>
-#include "user.h"
 #include "list.h"
 #ifndef SYSTEM_H
 #define SYSTEM_H
@@ -19,6 +18,7 @@ public:
 
 	/*Metodos*/
 	void PrintMessage();
+	void BuyPhone();
 
 		/* Usuario */ 
 	void NewUser();

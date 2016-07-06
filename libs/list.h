@@ -1,7 +1,5 @@
 #include <iostream>
 #include "node.h"
-#include "user.h"
-#include "phone.h"
 #ifndef LIST_H
 #define LIST_H
 
