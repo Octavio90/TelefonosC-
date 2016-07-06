@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string.h>
+#include <iomanip>
+#include <stdlib.h>
 #include "../libs/system.h"
 #include "../libs/list.h"
 #include "../libs/user.h"
@@ -12,16 +14,21 @@ System::System(){}
 
 System::~System(){}
 
-/* Getters y Setters */
+/* Metodos */
 void System::NewUser(){
+
 	string name;
 	string address;
 	float  credit;
 	int    id = users.Get_NumElements(); 
 	cout << endl;
+	//cin.ignore(256,'\n');
 	cout << "Nombre: " ;
 	cin  >> name;
+	//getline(cin,name);
+	//cin.ignore(256,'\n');
 	cout << "Direccion: " ;
+	//getline(cin,name);
 	cin  >> address;
 	cout << "Credito: " ;
 	cin  >> credit;
@@ -31,13 +38,91 @@ void System::NewUser(){
 	cout << "Usuario registrado exitosamente !!!"<< endl;
 }
 
+void System::NewPhone(){
+	string company;
+	string model;
+	string version;
+	float  weight;
+	float  camera_f;
+	float  camera_t;
+	int    mem_ram;
+	int    mem_rom;
+	float  price; 
+	char   opcion;
+	char   phoneNumber[15];
+
+	cout << endl;
+	cout << "Compañia: " ;
+	cin  >> company;
+	cout << "Modelo: " ;
+	cin  >> model;
+	cout << "Version (1-Android (default) / 2-iOS): " ;
+	cin  >> opcion;	
+		switch(opcion){
+			case '1':
+				version = "Android";
+				break;
+			case '2':
+				version = "iOS";
+				break;
+			default:
+				cout << "Opcion invalida, asignando valor por default (Android)" << endl;
+				version = "Android";
+				break;
+		}
+	cout << "Peso (kg): " ;
+	cin  >> weight;
+	cout << "Resolucion Camara frontal (Mpx): " ;
+	cin  >> camera_f;
+	cout << "Resolucion Camara trasera (Mpx): " ;
+	cin  >> camera_t;
+	cout << "Memoria RAM (MB): " ;
+	cin  >> mem_ram;
+	cout << "Memoria ROM (MB): " ;
+	cin  >> mem_rom;
+	cout << "Precio : $" ;
+	cin  >> price;
+
+	Phone phone(company,model,version,weight,camera_f,camera_t,mem_ram,mem_rom,price);
+
+ 	cout << endl << "Deseas Ingresar numero telfonico ? (y/n): ";
+ 	cin  >> opcion;
+ 		switch(opcion){
+ 			case 'Y':
+			case 'y':
+				cout << endl;
+				cout << "Ingrese el numero telefonico: ";
+				cin  >> phoneNumber;
+				phone.Set_PhoneNumber(phoneNumber);
+				break;
+			case 'N':
+			case 'n':
+				break;
+			default:
+				cout << "Opcion invalida, numero no asignado" << endl;
+				break;
+		}	
+ 	
+	phones.NewElement(phone);
+	cout << "Telefono guardado exitosamente !!!"<< endl;
+}
+
 void System::PrintAllUsers(){
 	PrintMessage();
 	users.PrintALL();
 }
 
+void System::PrintAllPhones(){
+	PrintMessage();
+	phones.PrintALL();
+}
+
 int System::NumUsers(){
 	return users.Get_NumElements();
+}
+
+int System::NumPhones(){
+	return phones.Get_NumElements();
 }
 
 void System::FindUser(){
@@ -98,6 +183,49 @@ void System::FindUser(){
 	}
 }
 
+
+void System::FindPhone(){
+	char op;
+	string motemp;
+	float pricetemp;
+	char* phoneNumber;
+	Phone *phone;
+	while(op != '0'){
+	motemp = "";
+	pricetemp = 0;
+	cout << endl;
+	cout << "\tBuscar telefono por:"  << endl;
+	cout << "1-Por Modelo." << endl;
+	cout << "2-Por Precio." << endl;
+	cout << "3-Por numero telefonico." << endl;
+	cout << "0-Regresar al menu principal" << endl; 
+	cout << endl << "Seleccione una opcion: ";
+	cin  >> op;
+	switch(op){
+		case '1':
+			cout<<endl<<"Ingrese el modelo del telefono : ";
+			cin>>motemp;
+			PrintMessage();
+			phones.FindByModel(motemp); 
+			break;
+		case '2':
+			cout<<endl<<"Ingrese el precio del telefono : ";
+			cin>>pricetemp;
+			PrintMessage();
+			phones.FindByPrice(pricetemp); 
+			break;
+		case '3':
+			break;
+		case '0':
+			break;
+		default:
+			cout << "Opcion invalida !!! " << endl << endl;
+			break;
+		}
+	}
+}	
+
+
 void System::PrintMessage(){
 	cout << endl;
 	cout << "-----------------------------" << endl;
@@ -107,7 +235,7 @@ void System::PrintMessage(){
 
 
 
-void System::ModifyUsers(){
+void System::ModifyUser(){
 	User *user;
 	int    itemp;
 	float  ftemp;
@@ -179,4 +307,7 @@ void System::ModifyUsers(){
 }
 
 
+
+void System::ModifyPhone(){
+}
 

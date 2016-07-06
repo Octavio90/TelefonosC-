@@ -16,13 +16,17 @@ private:
 	int   numElements;
 public:
 	List();
-	int   Get_NumElements();
-	bool  Empty();
-	void  NewElement(T &);
-	void  PrintALL();
-	User* FindByID(int);
-	void  FindByName(string);
-	void  FindByNumPhones(int);
+	int    Get_NumElements();
+	bool   Empty();
+	void   NewElement(T &);
+	void   PrintALL();
+	User*  FindByID(int);
+	void   FindByName(string);
+	void   FindByNumPhones(int);
+	
+	void   FindByModel(string);
+	void   FindByPrice(float);
+	Phone* FindByPhoneNumber(char *);
 };
 
 template <class T>
@@ -119,6 +123,61 @@ User* List<T>::FindByID(int id){
 				return aux->Get_Element();
 			}
 			aux = aux->next; 
+		}
+	}
+	return temp;
+}
+
+/* Neto */
+
+template <class T>
+void List<T>::FindByModel(string model){
+	if(Empty()==true){
+		cout<<"no se encontro conincidencia con el nombre de :"<< model<<endl;
+	}else{
+		Node<T> *aux=first;
+		while(aux !=NULL){
+			if(aux->Get_Element()->Get_Model()==model){
+				aux->Get_Element()->Detail();
+				cout<<"------------------------------"<<endl;
+			}
+			aux=aux->next;
+		}
+		cout<<"-------------------------"<<endl;
+	}
+}
+
+template<class T>
+void List<T>::FindByPrice(float price){
+	if(Empty()==true){
+		cout<<"No se encontro ningun telefono con ese precio "<<endl;
+	}else{
+		Node<T> *aux=first;
+		cout<<endl;
+		while(aux!=NULL){
+			if(aux->Get_Element()->Get_Price()==price){
+				aux->Get_Element()->Detail();
+				cout<<"---------------------"<<endl;
+			}
+			aux=aux->next;
+		}
+		cout<<"-----------------------"<<endl;
+	}
+}
+
+template<class T>
+Phone* List<T>::FindByPhoneNumber(char* phoneNumber){
+	Phone *temp=NULL;
+	if(Empty()==true){
+		cout<<"Lista de numeros Vacia!!! "<<endl;
+	}else{
+		Node<T> *aux=first;
+		cout<<endl;
+		while(aux != NULL){
+			if(aux->Get_Element()->Get_PhoneNumber()==phoneNumber){
+				return aux->Get_Element();
+			}
+			aux=aux->next;
 		}
 	}
 	return temp;

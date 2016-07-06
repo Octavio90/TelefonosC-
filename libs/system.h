@@ -9,19 +9,29 @@ using namespace std;
 
 class System{
 public:
-	List<User> users;
+	List<User>  users;
+	List<Phone> phones;
 
 	/*Constructores y Destructores*/
 	System();
 	~System();
 
-	/*Metodos*/ 
+	/*Metodos*/
+	void PrintMessage();
+
+		/* Usuario */ 
 	void NewUser();
 	void FindUser();
+	void ModifyUser();
 	void PrintAllUsers();
 	int  NumUsers();
-	void PrintMessage();
-	void ModifyUsers();
+	
+		/* Telefonos */
+	int  NumPhones();
+	void NewPhone();
+	void ModifyPhone();
+	void PrintAllPhones();
+	void FindPhone();
 };
 
 #endif

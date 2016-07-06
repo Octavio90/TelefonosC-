@@ -12,6 +12,7 @@ private:
 	float   credit;
 	int     numPhones;
 	int 	idUser;
+
 public:
 	/*Constructores y Destructores*/
 	User();
