@@ -51,7 +51,7 @@ void ListMessage::PrintAll(){
 		NodeMessage *aux = first;
 		while(aux != NULL){
 			aux->Get_Element()->Detail();
-			cout << "-----------------------------" << endl;
+			cout << endl;
 			aux = aux->next; 
 		}
 	}
