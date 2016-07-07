@@ -17,6 +17,7 @@ private:
 	float  camera_f;
 	float  price;
 	float  camera_t;
+	int    idPhone;
 	int    mem_ram;
 	int    mem_rom;
 
@@ -24,7 +25,7 @@ private:
 public:
 	/*Constructores y Destructores*/
 	Phone();
-	Phone(string,string,string,float,float,float,int,int,float);
+	Phone(string,string,string,float,float,float,int,int,float,int);
 	Phone(string,string);
 	~Phone();
 
@@ -41,18 +42,22 @@ public:
 	void   Set_PhoneNumber(string);
 	void   Set_PhoneNumber(const char*);
 	void   Set_Owner(User*);
+	void   Set_IdPhone(int);
 
 	string Get_Company();
 	string Get_Model();
 	string Get_Version();
 	string Get_PhoneNumber();
+	string* Get_PhoneNumber(char);	
 	float  Get_Weight();
 	float  Get_Camera_f();
 	float  Get_Camera_t();
 	float  Get_Price();
 	int    Get_Mem_ram();
 	int    Get_Mem_rom();
+	int    Get_IdPhone();
 	User*  Get_Owner();
+
 
 	/*Metodos*/
 	void Detail();

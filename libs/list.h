@@ -18,13 +18,20 @@ public:
 	bool   Empty();
 	void   NewElement(T &);
 	void   PrintALL();
+
 	User*  FindByID(int);
 	void   FindByName(string);
 	void   FindByNumPhones(int);
-	
+
 	void   FindByModel(string);
 	void   FindByPrice(float);
 	Phone* FindByPhoneNumber(string);
+	Phone* FindPhoneByID(int);
+
+	void   FindBillByUser(string);
+	void   FindBillByPrice(float);
+	Bill*  FindBillByPhoneNumber(string);
+	Bill*  FindBillByID(int);
 };
 
 template <class T>
@@ -179,6 +186,103 @@ Phone* List<T>::FindByPhoneNumber(string phoneNumber){
 		}
 	}
 	return temp;
+}
+
+
+template<class T>
+Phone* List<T>::FindPhoneByID(int idx){
+	Phone *temp=NULL;
+	if(Empty()==true){
+		cout<<"Lista de numeros Vacia!!! "<<endl;
+	}else{
+		Node<T> *aux=first;
+		cout<<endl;
+		while(aux != NULL){
+			if(aux->Get_Element()->Get_IdPhone()==idx){
+				return aux->Get_Element();
+			}
+			aux=aux->next;
+		}
+	}
+	return temp;
+}
+
+/**********************************/
+
+
+template<class T>
+Bill* List<T>::FindBillByID(int idx){
+	Bill *temp=NULL;
+	if(Empty()==true){
+		cout<<"Lista de numeros Vacia!!! "<<endl;
+	}else{
+		Node<T> *aux=first;
+		cout<<endl;
+		while(aux != NULL){
+			if(aux->Get_Element()->Get_IdBill()==idx){
+				return aux->Get_Element();
+			}
+			aux=aux->next;
+		}
+	}
+	return temp;
+}
+
+
+template<class T>
+Bill* List<T>::FindBillByPhoneNumber(string phoneNumber){
+	Bill *temp=NULL;
+	if(Empty()==true){
+		cout<<"Lista de numeros Vacia!!! "<<endl;
+	}else{
+		Node<T> *aux=first;
+		cout<<endl;
+		while(aux != NULL){
+			if(aux->Get_Element()->Get_Phone()->Get_PhoneNumber()==phoneNumber){
+				return aux->Get_Element();
+			}
+			aux=aux->next;
+		}
+	}
+	return temp;
+}
+
+
+template <class T>
+void List<T>::FindBillByUser(string name){
+
+	if(Empty() == true){
+		cout << "No se encontro ninguna coincidencia !!! " << endl;
+	}else{
+		Node<T> *aux = first; 
+		while(aux != NULL){
+			if(aux->Get_Element()->Get_User()->Get_Name() == name){
+				aux->Get_Element()->Detail();
+				cout << "-----------------------------" << endl;
+			}
+			aux = aux->next; 
+		}
+		cout << "-----------------------------" << endl;
+	}
+}
+
+
+template <class T>
+void List<T>::FindBillByPrice(float price){
+
+	if(Empty() == true){
+		cout << "No se encontro ninguna coincidencia !!! " << endl;
+	}else{
+		Node<T> *aux = first; 
+		while(aux != NULL){
+			if(aux->Get_Element()->Get_Amount() == price){
+				aux->Get_Element()->Detail();
+				cout << "-----------------------------" << endl;
+			}
+			aux = aux->next; 
+		}
+		cout << "-----------------------------" << endl;
+	}
 }
 
 #endif
