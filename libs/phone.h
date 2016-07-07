@@ -1,5 +1,6 @@
 #include <iostream>
 #include "user.h"
+#include "listmessage.h"
 #ifndef PHONE_H
 #define PHONE_H
 
@@ -20,6 +21,7 @@ private:
 	int    idPhone;
 	int    mem_ram;
 	int    mem_rom;
+	ListMessage messages;
 
 	
 public:
@@ -57,6 +59,7 @@ public:
 	int    Get_Mem_rom();
 	int    Get_IdPhone();
 	User*  Get_Owner();
+	ListMessage* Get_Messages();
 
 
 	/*Metodos*/

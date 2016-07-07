@@ -34,6 +34,8 @@ public:
 	/*Metodos*/
 	void PrintMessage();
 	void BuyPhone();
+	void SendMessage();
+	void ViewMessage();
 	
 		/* Facturas */
 	void NewBill(User &, Phone &);

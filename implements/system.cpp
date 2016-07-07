@@ -686,13 +686,6 @@ void System::BuyPhone(){
 }
 
 
-void System::NewBill(User &user, Phone &phone){
-
-	Bill  bill(user,phone,phone.Get_Price(),"07/07/2016",1000+Get_ContBill());
-	bills.NewElement(bill);
-	Set_ContBill(Get_ContBill() + 1);
-}
-
 void System::FindBill(){
 	int    itemp;
 	string stemp;
@@ -751,3 +744,69 @@ void System::FindBill(){
 			}
 	}
 }	
+
+
+void System::NewBill(User &user, Phone &phone){
+
+	Bill  bill(user,phone,phone.Get_Price(),"07/07/2016",1000+Get_ContBill());
+	bills.NewElement(bill);
+	Set_ContBill(Get_ContBill() + 1);
+}
+
+void System::SendMessage(){
+	char   op;
+	string stemp;
+	Phone  *sender = NULL;
+	Phone  *dest = NULL;
+
+	cin.ignore(256,'\n');
+
+		cout << endl;
+		cout << "Ingrese Numero del Remitente: ";
+		getline(cin,stemp);
+
+		sender = phones.FindByPhoneNumber(stemp);
+
+		if(sender != NULL){
+			cout << endl;
+			cout << "Ingrese Numero del Destinatatio: ";
+			getline(cin,stemp);
+
+			dest = phones.FindByPhoneNumber(stemp);
+
+			if(dest != NULL){
+				cout << endl;
+				cout << "Escriba el Texto: ";
+				getline(cin,stemp);
+
+				Message message(stemp,"07/07/16",sender->Get_Owner()->Get_Name(),sender->Get_PhoneNumber(),false);
+				dest->Get_Messages()->NewElement(message);
+				cout << "Mensaje enviado !!! " << endl << endl;				
+			}else{
+				cout << "Telefono no encontrado !!!" << endl << endl;	
+			}
+
+		}else{
+			cout << "Telefono no encontrado !!!" << endl << endl;
+		}
+}
+
+
+void System::ViewMessage(){
+	Phone *phone = NULL;
+	string stemp;
+
+	cin.ignore(256,'\n');
+
+		cout << endl;
+		cout << "Ingrese Numero telefonico: ";
+		getline(cin,stemp);
+
+		phone = phones.FindByPhoneNumber(stemp);
+
+		if(phone != NULL){
+			phone->Get_Messages()->PrintAll();
+		}else{
+			cout << "Telefono no encontrado !!! " << endl << endl;
+		}
+}

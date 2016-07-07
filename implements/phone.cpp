@@ -38,6 +38,7 @@ int    Phone::Get_Mem_ram(){return mem_ram;}
 int    Phone::Get_Mem_rom(){return mem_rom;}
 int    Phone::Get_IdPhone(){return idPhone;}
 User*  Phone::Get_Owner(){return owner;}
+ListMessage* Phone::Get_Messages(){return &messages;}
 
 void   Phone::Set_Company(string comp){company=comp;}
 void   Phone::Set_Model(string mol){model=mol;}
