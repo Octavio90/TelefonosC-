@@ -363,6 +363,232 @@ void System::ModifyUser(){
 
 
 void System::ModifyPhone(){
+	Phone *phone;
+	int    itemp;
+	int    opcion;
+	string stemp;
+	string version;
+	float  ftemp;
+	char   ctemp[25];
+
+	cout<<endl<<"Ingrese el numero del telefono a modificar\n el numero debe de ser de 10 digitos iniciando con 55 :";
+	cin>>stemp;
+	phone = phones.FindByPhoneNumber(stemp);
+	PrintMessage();
+		if(phone != NULL)
+			phone->Detail();
+		else
+			cout << "Telefono no encontrado" << endl;
+	cout << "-----------------------------" << endl;
+	cout << "-----------------------------" << endl;
+	cout << endl;
+
+		
+	if(phone != NULL){
+
+		cout << "\tModificar:" << endl;
+		cout << "1-Compania." << endl;
+		cout << "2-Modelo." << endl;
+		cout << "3-Version." << endl;
+		cout << "4-Peso." << endl;
+		cout << "5-Camara frontal." << endl;
+		cout << "6-Camara trasera." << endl;
+		cout << "7-Memoria ram." << endl;
+		cout << "8-Memoria rom" << endl;
+		cout << "9-Precio." << endl;
+		cout << "10-Numero telefonico"<<endl;
+		cout << "11-todas las opciones sin modificar el numero "<<endl;
+		cout << "12-todas las opciones "<<endl;
+		cout << "Seleccione una opcion: ";
+		cin  >> opcion;
+		cout << endl;
+		cin.ignore(256,'\n');
+		switch(opcion){
+			case 1:
+				cout << "Ingrese la nueva compania: " ;
+				getline(cin,stemp);
+				phone->Set_Company(stemp);
+				stemp = "";
+				break;
+			case 2:
+				cout << "Ingrese nuevo modelo: " ;
+				getline(cin,stemp);
+				phone->Set_Model(stemp);
+				stemp = "";
+				break;
+			case 3:
+				cout << "Version (1-Android (default) / 2-iOS): " ;
+				cin  >> itemp;	
+					switch(itemp){
+						case 1:
+							stemp = "Android";
+							phone->Set_Version(stemp);
+							stemp="";
+							break;
+						case 2:
+							stemp  = "iOS";
+							phone->Set_Version(stemp);
+							stemp="";
+							break;
+						default:
+							cout << "Opcion invalida, asignando valor por default (Android)" << endl;
+							stemp = "Android";
+							phone->Set_Version(stemp);
+							stemp="";
+							break;
+					}
+				
+				break;
+			case 4:
+				cout << "Ingrese el peso : " ;
+				cin  >> ftemp;
+				phone->Set_Weight(ftemp);
+				break;
+			case 5:
+				cout << "Resolucion Camara frontal (Mpx): " ;
+				cin  >> ftemp;
+				phone->Set_Camera_f(ftemp);
+				break;
+			case 6:
+				cout << "Resolucion Camara trasera (Mpx): " ;
+				cin  >> ftemp;
+				phone->Set_Camera_t(ftemp);
+				break;
+			case 7:
+				cout << "Memoria RAM (MB): " ;
+				cin  >> itemp;
+				phone->Set_Mem_ram(itemp);
+				break;
+			case 8:
+				cout << "Memoria ROM (MB): " ;
+				cin  >> itemp;
+				phone->Set_Mem_rom(itemp);
+				break;
+			case 9:
+				cout << endl;
+				cout << "Ingrese el nuevo precio: ";
+				cin  >> ftemp;
+				phone->Set_Price(ftemp);
+				break;
+			case 10:
+				cout << endl;
+				cout << "Ingrese el nuevo numero telefonico: ";
+				cin  >> ctemp;
+				phone->Set_PhoneNumber(ctemp);
+				break;
+			case 11:
+				cout << "Ingrese la nueva compania: " ;
+				getline(cin,stemp);
+				phone->Set_Company(stemp);
+				stemp = "";
+				cout << "Ingrese nuevo modelo: " ;
+				getline(cin,stemp);
+				phone->Set_Model(stemp);
+				stemp = "";
+				cout << "Version (1-Android (default) / 2-iOS): " ;
+				cin  >> itemp;	
+					switch(itemp){
+						case 1:
+							stemp = "Android";
+							break;
+						case 2:
+							stemp = "iOS";
+							break;
+						default:
+							cout << "Opcion invalida, asignando valor por default (Android)" << endl;
+							stemp = "Android";
+							break;
+					}
+				//cin  >> stemp;
+				phone->Set_Version(stemp);
+				stemp="";
+				cout << "Ingrese el peso : " ;
+				cin  >> ftemp;
+				phone->Set_Weight(ftemp);
+				cout << "Resolucion Camara frontal (Mpx): " ;
+				cin  >> ftemp;
+				phone->Set_Camera_f(ftemp);
+				cout << "Resolucion Camara trasera (Mpx): " ;
+				cin  >> ftemp;
+				phone->Set_Camera_t(ftemp);
+				cout << "Memoria RAM (MB): " ;
+				cin  >> itemp;
+				phone->Set_Mem_ram(itemp);
+				itemp=0;
+				cout << "Memoria ROM (MB): " ;
+				cin  >> itemp;
+				phone->Set_Mem_rom(itemp);
+				itemp=0;
+				cout<<endl;
+				cout << endl;
+				cout << "Ingrese el nuevo precio: ";
+				cin  >> ftemp;
+				phone->Set_Price(ftemp);
+				break;
+			case 12:
+				cout << "Ingrese la nueva compania: " ;
+				getline(cin,stemp);
+				phone->Set_Company(stemp);
+				stemp = "";
+				cout << "Ingrese nuevo modelo: " ;
+				getline(cin,stemp);
+				phone->Set_Model(stemp);
+				stemp = "";
+				cout << "Version (1-Android (default) / 2-iOS): " ;
+				cin  >> itemp;	
+					switch(itemp){
+						case 1:
+							stemp = "Android";
+							break;
+						case 2:
+							stemp = "iOS";
+							break;
+						default:
+							cout << "Opcion invalida, asignando valor por default (Android)" << endl;
+							stemp = "Android";
+							break;
+					}
+				//cin  >> stemp;
+				phone->Set_Version(stemp);
+				stemp="";
+				cout << "Ingrese el peso : " ;
+				cin  >> ftemp;
+				phone->Set_Weight(ftemp);
+
+				cout << "Resolucion Camara frontal (Mpx): " ;
+				cin  >> ftemp;
+				phone->Set_Camera_f(ftemp);
+
+				cout << "Resolucion Camara trasera (Mpx): " ;
+				cin  >> ftemp;
+				phone->Set_Camera_t(ftemp);
+
+				cout << "Memoria RAM (MB): " ;
+				cin  >> itemp;
+				phone->Set_Mem_ram(itemp);
+				itemp=0;
+				cout << "Memoria ROM (MB): " ;
+				cin  >> itemp;
+				phone->Set_Mem_rom(itemp);
+				itemp=0;
+				cout << endl;
+				cout << "Ingrese el nuevo precio: ";
+				cin  >> ftemp;
+				phone->Set_Price(ftemp);
+				cout << endl;
+				cout << "Ingrese el nuevo numero telefonico: ";
+				cin  >> ctemp;
+				phone->Set_PhoneNumber(ctemp);
+				cout<<endl;
+				break;
+			default:
+				cout << "Opcion invalida !!! " << endl;
+				break;
+		}
+			
+		cout << "Telefono modificado !!!" << endl;
+		phone->Detail();
+	}
 }
 
 void System::BuyPhone(){
@@ -434,14 +660,11 @@ void System::BuyPhone(){
 					}
 					else{
 						User *oldOwner=phone->Get_Owner();
-
 						if(user->Get_Credit() < phone->Get_Price()){
 							cout << "El usuario " << user->Get_Name() << " no cuenta con suficientes fondos !!!" << endl; 
 							return ;
 						
 						}else if(oldOwner != NULL){
-							
-
 							cout << "El numero telefonico que intenta registrar ya tiene un propietario ( ";
 							cout << oldOwner->Get_Name() << ")" << endl<< endl;
 							return;
